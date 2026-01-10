@@ -63,6 +63,20 @@
             overflow-x: hidden;
         }
 
+        /* Grain subtil global */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
         ::selection {
             background: var(--accent);
             color: var(--white);
@@ -473,6 +487,35 @@
         /* Services Section */
         .services {
             padding: 150px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Blobs flous style Stripe/Linear */
+        .services::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(28, 187, 200, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+        }
+
+        .services::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -150px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(28, 187, 200, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(60px);
+            pointer-events: none;
         }
 
         .section-header {
@@ -609,6 +652,17 @@
         .process {
             padding: 150px 60px;
             background: var(--gray-100);
+            position: relative;
+        }
+
+        /* Grille de points subtile */
+        .process::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, rgba(0, 0, 0, 0.08) 1px, transparent 1px);
+            background-size: 24px 24px;
+            pointer-events: none;
         }
 
         .process-steps {
@@ -670,6 +724,31 @@
             padding: 150px 60px;
             background: var(--dark);
             color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Dégradés radiaux dans les coins */
+        .results::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(28, 187, 200, 0.2) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .results::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            right: -100px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(28, 187, 200, 0.15) 0%, transparent 60%);
+            pointer-events: none;
         }
 
         .results-header {
