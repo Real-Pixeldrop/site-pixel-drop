@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Clients - Pixel Drop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --accent: #1CBBC8;
+            --accent-dark: #17a5b1;
+            --dark: #0a0a0a;
+            --gray-600: #6b7280;
+            --gray-400: #9ca3af;
+            --gray-200: #e5e7eb;
+            --gray-100: #f3f4f6;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--white);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 38px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--gray-600);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--dark);
+        }
+
+        .nav-cta {
+            background: var(--dark);
+            color: var(--white);
+            padding: 12px 28px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background: var(--accent);
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 160px 60px 80px;
+            max-width: 900px;
+        }
+
+        .page-header h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 25px;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: var(--gray-600);
+            max-width: 700px;
+        }
+
+        /* Clients Grid */
+        .clients-section {
+            padding: 0 60px 100px;
+        }
+
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .client-card {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .client-image {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .client-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .client-card:hover .client-image img {
+            transform: scale(1.05);
+        }
+
+        /* Styled placeholder for client images */
+        .client-placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .client-placeholder::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0.1;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .client-placeholder svg {
+            width: 64px;
+            height: 64px;
+            stroke-width: 1.5;
+            opacity: 0.9;
+            transition: transform 0.3s ease;
+        }
+
+        .client-card:hover .client-placeholder svg {
+            transform: scale(1.1);
+        }
+
+        .placeholder-reporting { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .placeholder-reporting svg { stroke: #fff; }
+
+        .placeholder-crm { background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); }
+        .placeholder-crm svg { stroke: #fff; }
+
+        .placeholder-ai { background: linear-gradient(135deg, #fc466b 0%, #3f5efb 100%); }
+        .placeholder-ai svg { stroke: #fff; }
+
+        .placeholder-booking { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .placeholder-booking svg { stroke: #fff; }
+
+        .placeholder-calendar { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .placeholder-calendar svg { stroke: #fff; }
+
+        .placeholder-leads { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .placeholder-leads svg { stroke: #fff; }
+
+        .placeholder-sms { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
+        .placeholder-sms svg { stroke: #1a1a2e; }
+
+        .placeholder-compare { background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%); }
+        .placeholder-compare svg { stroke: #1a1a2e; }
+
+        .client-roi {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--dark);
+            padding: 10px 18px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--white);
+            margin: 15px 0 12px;
+            width: fit-content;
+        }
+
+        .client-roi svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--accent);
+        }
+
+        .client-logo {
+            width: 28px;
+            height: 28px;
+            background: var(--gray-100);
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        .client-logo-img {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+            border-radius: 6px;
+            margin-right: 8px;
+            vertical-align: middle;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .client-card:hover .client-logo-img {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        .client-name-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 4px;
+        }
+
+        .client-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .client-sector {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            margin-bottom: 2px;
+        }
+
+        .client-work {
+            font-size: 0.8rem;
+            color: var(--gray-400);
+        }
+
+        /* CTA */
+        .page-cta {
+            padding: 100px 60px;
+            background: var(--gray-100);
+            text-align: center;
+        }
+
+        .page-cta h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .page-cta p {
+            font-size: 1.1rem;
+            color: var(--gray-600);
+            margin-bottom: 40px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--dark);
+            color: var(--white);
+            padding: 18px 36px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* Contact Popup */
+        .contact-popup-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .contact-popup {
+            position: absolute;
+            bottom: calc(100% + 15px);
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: var(--white);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.25s ease;
+            min-width: 280px;
+            z-index: 100;
+        }
+
+        .contact-popup.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .contact-popup::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid var(--white);
+        }
+
+        /* Popup below button (for nav) */
+        .contact-popup.popup-below {
+            bottom: auto;
+            top: calc(100% + 15px);
+            transform: translateX(-50%) translateY(-10px);
+        }
+
+        .contact-popup.popup-below.active {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .contact-popup.popup-below::after {
+            bottom: auto;
+            top: -8px;
+            border-top: none;
+            border-bottom: 10px solid var(--white);
+        }
+
+        .popup-title {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .popup-options {
+            display: flex;
+            gap: 10px;
+        }
+
+        .popup-option {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .popup-option.whatsapp {
+            background: #25D366;
+            color: white;
+        }
+
+        .popup-option.whatsapp:hover {
+            background: #20bd5a;
+            transform: translateY(-2px);
+        }
+
+        .popup-option.email {
+            background: var(--gray-100);
+            color: var(--dark);
+        }
+
+        .popup-option.email:hover {
+            background: var(--gray-200);
+            transform: translateY(-2px);
+        }
+
+        .popup-option svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 40px 60px;
+            text-align: center;
+        }
+
+        footer p {
+            color: var(--gray-400);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        .nav-cta-secondary {
+            color: var(--dark);
+            padding: 12px 24px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 1px solid var(--gray-200);
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        @media (max-width: 1200px) {
+            .clients-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 20px 30px;
+            }
+            .nav-links {
+                display: none;
+            }
+            .page-header, .clients-section, .page-cta {
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+            .clients-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">
+            <img src="logo-pixel-drop.svg" alt="Pixel Drop">
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="index.html#process">Processus</a></li>
+            <li><a href="clients.html">Clients</a></li>
+            <li><a href="index.html#results">Résultats</a></li>
+        </ul>
+        <div style="display: flex; gap: 8px; align-items: center;">
+            <div class="contact-popup-wrapper">
+                <div class="contact-popup popup-below" id="navPopup">
+                    <div class="popup-title">Comment préférez-vous discuter ?</div>
+                    <div class="popup-options">
+                        <a href="https://wa.me/33183641741" class="popup-option whatsapp">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            WhatsApp
+                        </a>
+                        <a href="mailto:contact@pixel-drop.com" class="popup-option email">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
+                            Email
+                        </a>
+                    </div>
+                </div>
+                <button class="nav-cta-secondary" style="cursor: pointer; border: 1px solid var(--gray-200); background: transparent;" id="navBtn">Discutons</button>
+            </div>
+            <a href="simulateur/" class="nav-cta">Simulateur</a>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <h1>Ils nous font confiance</h1>
+        <p>PME, startups et grands groupes qui ont automatisé leurs process avec Pixel Drop. Des résultats concrets, mesurables.</p>
+    </header>
+
+    <section class="clients-section">
+        <div class="clients-grid">
+
+            <!-- Sharp - Reporting -->
+            <!-- Image: clients/sharp.png (ou .jpg) -->
+            <div class="client-card">
+                <div class="client-image">
+                    <div class="client-placeholder placeholder-reporting">
+                        <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/><path d="M13 15h4"/><path d="M13 12h4"/></svg>
+                    </div>
+                    <!-- <img src="clients/sharp.png" alt="Sharp - Reporting automatisé"> -->
+                </div>
+                <div class="client-roi">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                    -40% temps de reporting
+                </div>
+                <div class="client-name-row">
+                                        <div class="client-name">Sharp</div>
+                </div>
+                <div class="client-sector">Electronique grand public</div>
+                <div class="client-work">Automatisation reporting qualité</div>
+            </div>
+
+            <!-- Fidolux - CRM Sync -->
+            <div class="client-card">
+                <div class="client-image">
+                    <img src="clients/fidolux.png" alt="Fidolux - Synchro CRM">
+                </div>
+                <div class="client-roi">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                    8h → 30min/semaine
+                </div>
+                <div class="client-name-row">
+                                        <div class="client-name">Fidolux</div>
+                </div>
+                <div class="client-sector">Gestion de patrimoine</div>
+                <div class="client-work">Synchro CRM + génération rapports</div>
+            </div>
+
+            <!-- Nestlé - AI Generation -->
+            <div class="client-card">
+                <div class="client-image">
+                    <img src="clients/nestle.png" alt="Nestlé - Génération IA">
+                </div>
+                <div class="client-roi">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                    200 fiches produits/mois
+                </div>
+                <div class="client-name-row">
+                    <div class="client-name">Nestlé</div>
+                </div>
+                <div class="client-sector">Agroalimentaire</div>
+                <div class="client-work">Génération fiches produits IA</div>
+            </div>
+
+            <!-- VTC Swiss - Booking -->
+            <!-- Image: clients/vtc-swiss.png -->
+            <div class="client-card">
+                <div class="client-image">
+                    <div class="client-placeholder placeholder-booking">
+                        <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/></svg>
+                    </div>
+                    <!-- <img src="clients/vtc-swiss.png" alt="VTC Swiss - Réservations"> -->
+                </div>
+                <div class="client-roi">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                    +35% réservations
+                </div>
+                <div class="client-name-row">
+                                        <div class="client-name">VTC Swiss</div>
+                </div>
+                <div class="client-sector">Chauffeur privé Genève</div>
+                <div class="client-work">Automatisation réservations</div>
+            </div>
+
+            <!-- Cinéloges France - Calendar -->
+            <!-- Image: clients/cineloges.png -->
+            <div class="client-card">
+                <div class="client-image">
+                    <div class="client-placeholder placeholder-calendar">
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <!-- <img src="clients/cineloges.png" alt="Cinéloges - Planning"> -->
+                </div>
+                <div class="client-roi">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                    0 réservation oubliée
+                </div>
+                <div class="client-name-row">
+                                        <div class="client-name">Cinéloges France</div>
+                </div>
+                <div class="client-sector">Location salles de cinéma</div>
+                <div class="client-work">Gestion réservations + facturation</div>
+            </div>
+
+            <!-- LXB Estate - Leads -->
+            <!-- Image: clients/lxb-estate.png -->
+            <div class="client-card">
+                <div class="client-image">
+                    <div class="client-placeholder placeholder-leads">
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <!-- <img src="clients/lxb-estate.png" alt="LXB Estate - Leads"> -->
+                </div>
+                <div class="client-roi">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                    +60% demandes qualifiées
+                </div>
+                <div class="client-name-row">
+                                        <div class="client-name">LXB Estate</div>
+                </div>
+                <div class="client-sector">Immobilier de luxe Luxembourg</div>
+                <div class="client-work">Qualification leads automatisée</div>
+            </div>
+
+            <!-- DerniereDispo.com - SMS -->
+            <!-- Image: clients/dernieredispo.png -->
+            <div class="client-card">
+                <div class="client-image">
+                    <div class="client-placeholder placeholder-sms">
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h.01"/><path d="M12 10h.01"/><path d="M16 10h.01"/></svg>
+                    </div>
+                    <!-- <img src="clients/dernieredispo.png" alt="DerniereDispo - SMS"> -->
+                </div>
+                <div class="client-roi">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                    -90% no-shows
+                </div>
+                <div class="client-name-row">
+                                        <div class="client-name">dernieredispo.com</div>
+                </div>
+                <div class="client-sector">Réservation restauration</div>
+                <div class="client-work">Rappels SMS + gestion annulations</div>
+            </div>
+
+            <!-- TransEurope - Compare -->
+            <!-- Image: clients/transeurope.png -->
+            <div class="client-card">
+                <div class="client-image">
+                    <div class="client-placeholder placeholder-compare">
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                    </div>
+                    <!-- <img src="clients/transeurope.png" alt="TransEurope - Devis"> -->
+                </div>
+                <div class="client-roi">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                    2h → 5min par devis
+                </div>
+                <div class="client-name-row">
+                                        <div class="client-name">TransEurope</div>
+                </div>
+                <div class="client-sector">Transport & Logistique</div>
+                <div class="client-work">Comparateur de devis automatisé</div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="page-cta">
+        <h2>Votre entreprise est la prochaine ?</h2>
+        <p>30 minutes pour identifier ce qu'on peut automatiser chez vous. Gratuit, sans engagement.</p>
+        <div class="contact-popup-wrapper">
+            <div class="contact-popup" id="contactPopup">
+                <div class="popup-title">Comment préférez-vous discuter ?</div>
+                <div class="popup-options">
+                    <a href="https://wa.me/33183641741" class="popup-option whatsapp">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        WhatsApp
+                    </a>
+                    <a href="mailto:contact@pixel-drop.com" class="popup-option email">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
+                        Email
+                    </a>
+                </div>
+            </div>
+            <button class="btn-primary" id="contactBtn">
+                Discutons
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </button>
+        </div>
+    </section>
+
+    <script>
+        // All popup buttons and popups
+        const popupButtons = [
+            { btn: document.getElementById('contactBtn'), popup: document.getElementById('contactPopup') },
+            { btn: document.getElementById('navBtn'), popup: document.getElementById('navPopup') }
+        ];
+
+        popupButtons.forEach(({ btn, popup }) => {
+            if (btn && popup) {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    // Close other popups
+                    popupButtons.forEach(({ popup: p }) => {
+                        if (p && p !== popup) p.classList.remove('active');
+                    });
+                    popup.classList.toggle('active');
+                });
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            popupButtons.forEach(({ btn, popup }) => {
+                if (popup && !popup.contains(e.target) && e.target !== btn) {
+                    popup.classList.remove('active');
+                }
+            });
+        });
+    </script>
+
+    <footer>
+        <p>&copy; 2025 Pixel Drop. Tous droits réservés. | <a href="index.html">Retour au site</a></p>
+    </footer>
+
+</body>
+</html>

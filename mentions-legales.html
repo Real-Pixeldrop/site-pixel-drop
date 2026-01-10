@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentions légales - Pixel Drop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --accent: #1CBBC8;
+            --dark: #0a0a0a;
+            --gray-600: #6b7280;
+            --gray-200: #e5e7eb;
+            --gray-100: #f3f4f6;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--white);
+            color: var(--dark);
+            line-height: 1.7;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 38px;
+            width: auto;
+        }
+
+        .nav-cta {
+            background: var(--dark);
+            color: var(--white);
+            padding: 12px 28px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background: var(--accent);
+        }
+
+        .legal-page {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 140px 30px 80px;
+        }
+
+        .legal-page h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: var(--dark);
+        }
+
+        .legal-page h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .legal-page p {
+            margin-bottom: 15px;
+            color: var(--gray-600);
+        }
+
+        .legal-page strong {
+            color: var(--dark);
+        }
+
+        .legal-page ul {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            color: var(--gray-600);
+        }
+
+        .legal-page li {
+            margin-bottom: 8px;
+        }
+
+        .legal-page a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .legal-page a:hover {
+            text-decoration: underline;
+        }
+
+        .info-box {
+            background: var(--gray-100);
+            padding: 25px 30px;
+            border-radius: 16px;
+            margin: 30px 0;
+        }
+
+        .info-box p {
+            margin-bottom: 8px;
+        }
+
+        .info-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 40px 60px;
+            text-align: center;
+        }
+
+        footer p {
+            color: var(--gray-600);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--accent);
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 20px 30px;
+            }
+            .legal-page {
+                padding: 120px 20px 60px;
+            }
+            .legal-page h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">
+            <img src="logo-pixel-drop.svg" alt="Pixel Drop">
+        </a>
+        <a href="index.html#contact" class="nav-cta">Contact</a>
+    </nav>
+
+    <main class="legal-page">
+        <h1>Mentions légales</h1>
+
+        <h2>Editeur du site</h2>
+        <div class="info-box">
+            <p><strong>Raison sociale :</strong> AKLI GOUDJIL (Pixel Drop)</p>
+            <p><strong>Forme juridique :</strong> Entrepreneur individuel</p>
+            <p><strong>SIREN :</strong> 908 154 073</p>
+            <p><strong>SIRET :</strong> 908 154 073 00013</p>
+            <p><strong>Code NAF :</strong> 7410Z - Activités spécialisées de design</p>
+            <p><strong>Adresse :</strong> 58 rue de la Chaussée d'Antin, 75009 Paris</p>
+            <p><strong>Téléphone :</strong> <a href="tel:+33183641741">01 83 64 17 41</a></p>
+            <p><strong>Email :</strong> <a href="mailto:contact@pixel-drop.com">contact@pixel-drop.com</a></p>
+        </div>
+
+        <h2>Directeur de la publication</h2>
+        <p>Akli Goudjil, en qualité d'entrepreneur individuel.</p>
+
+        <h2>Hébergement</h2>
+        <div class="info-box">
+            <p><strong>Hébergeur :</strong> Hostinger International Ltd</p>
+            <p><strong>Adresse :</strong> 61 Lordou Vironos Street, 6023 Larnaca, Chypre</p>
+            <p><strong>Site web :</strong> <a href="https://www.hostinger.fr" target="_blank">www.hostinger.fr</a></p>
+        </div>
+
+        <h2>Propriété intellectuelle</h2>
+        <p>L'ensemble du contenu de ce site (textes, images, graphismes, logo, icônes, sons, logiciels, etc.) est la propriété exclusive de Pixel Drop ou de ses partenaires, et est protégé par les lois françaises et internationales relatives à la propriété intellectuelle.</p>
+        <p>Toute reproduction, représentation, modification, publication, adaptation de tout ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite, sauf autorisation écrite préalable de Pixel Drop.</p>
+
+        <h2>Limitation de responsabilité</h2>
+        <p>Pixel Drop s'efforce de fournir des informations aussi précises que possible sur ce site. Toutefois, il ne pourra être tenu responsable des omissions, des inexactitudes et des carences dans la mise à jour, qu'elles soient de son fait ou du fait des tiers partenaires qui lui fournissent ces informations.</p>
+        <p>Les informations présentes sur ce site sont données à titre indicatif et sont susceptibles d'évoluer. Pixel Drop ne saurait être tenu responsable de l'utilisation et de l'interprétation de l'information contenue dans ce site.</p>
+
+        <h2>Liens hypertextes</h2>
+        <p>Le site pixel-drop.com peut contenir des liens hypertextes vers d'autres sites. Pixel Drop n'exerce aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu ou aux éventuels collectes et traitements de données personnelles effectués par ces sites.</p>
+
+        <h2>Droit applicable</h2>
+        <p>Les présentes mentions légales sont soumises au droit français. En cas de litige, les tribunaux français seront seuls compétents.</p>
+
+        <h2>Contact</h2>
+        <p>Pour toute question relative aux présentes mentions légales, vous pouvez nous contacter :</p>
+        <ul>
+            <li>Par email : <a href="mailto:contact@pixel-drop.com">contact@pixel-drop.com</a></li>
+            <li>Par téléphone : <a href="tel:+33183641741">01 83 64 17 41</a></li>
+            <li>Par WhatsApp : <a href="https://wa.me/33183641741" target="_blank">Envoyer un message</a></li>
+        </ul>
+
+        <p style="margin-top: 40px; font-size: 0.9rem; color: var(--gray-600);">Dernière mise à jour : Janvier 2025</p>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Pixel Drop. Tous droits réservés. | <a href="index.html">Retour au site</a></p>
+    </footer>
+
+</body>
+</html>
