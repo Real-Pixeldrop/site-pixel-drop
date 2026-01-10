@@ -3,47 +3,380 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculateur : Combien vous coûtent vos tâches manuelles ?</title>
+    <title>Calculateur : Combien vous coutent vos taches manuelles ? | Pixel Drop</title>
+    <meta name="description" content="Calculez en 30 secondes le temps et l'argent que vous perdez chaque annee sur vos taches repetitives. Simulateur gratuit par Pixel Drop.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <meta name="theme-color" content="#1CBBC8">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --accent: #1CBBC8;
+            --accent-dark: #17a5b1;
+            --dark: #0a0a0a;
+            --gray-900: #1a1a1a;
+            --gray-600: #6b7280;
+            --gray-400: #9ca3af;
+            --gray-200: #e5e7eb;
+            --gray-100: #f3f4f6;
+            --white: #ffffff;
+            --font-display: 'Space Grotesk', sans-serif;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: #f8f9fa;
-            min-height: 100vh;
-            color: #1a1a2e;
-            line-height: 1.6;
+        html {
+            scroll-behavior: smooth;
         }
 
+        body {
+            font-family: var(--font-display);
+            background: var(--gray-100);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--dark);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 38px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--gray-600);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--dark);
+        }
+
+        .nav-cta-secondary {
+            color: var(--dark);
+            padding: 12px 24px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            border: 1px solid var(--gray-200);
+            margin-right: 10px;
+        }
+
+        .nav-cta-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .nav-cta {
+            background: var(--dark);
+            color: var(--white);
+            padding: 12px 28px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* Contact Popup */
+        .contact-popup-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .contact-popup {
+            position: absolute;
+            bottom: calc(100% + 15px);
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: var(--white);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.25s ease;
+            min-width: 280px;
+            z-index: 100;
+        }
+
+        .contact-popup.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .contact-popup::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid var(--white);
+        }
+
+        .contact-popup.popup-below {
+            bottom: auto;
+            top: calc(100% + 15px);
+            transform: translateX(-50%) translateY(-10px);
+        }
+
+        .contact-popup.popup-below.active {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .contact-popup.popup-below::after {
+            bottom: auto;
+            top: -8px;
+            border-top: none;
+            border-bottom: 10px solid var(--white);
+        }
+
+        .popup-title {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .popup-options {
+            display: flex;
+            gap: 10px;
+        }
+
+        .popup-option {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .popup-option.whatsapp {
+            background: #25D366;
+            color: white;
+        }
+
+        .popup-option.whatsapp:hover {
+            background: #20bd5a;
+            transform: translateY(-2px);
+        }
+
+        .popup-option.email {
+            background: var(--gray-100);
+            color: var(--dark);
+        }
+
+        .popup-option.email:hover {
+            background: var(--gray-200);
+            transform: translateY(-2px);
+        }
+
+        .popup-option svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .btn-popup {
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 6px;
+            width: 44px;
+            height: 44px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--dark);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--white);
+            z-index: 999;
+            padding: 120px 40px 40px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .mobile-menu-links li {
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .mobile-menu-links a {
+            display: block;
+            padding: 20px 0;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--dark);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu-links a:hover {
+            color: var(--accent);
+        }
+
+        .mobile-menu-cta {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .mobile-menu-cta a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 18px 30px;
+            border-radius: 100px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .mobile-menu-cta .btn-whatsapp {
+            background: #25D366;
+            color: white;
+        }
+
+        .mobile-menu-cta .btn-simulateur {
+            background: var(--dark);
+            color: white;
+        }
+
+        /* Main Content */
         .container {
             max-width: 800px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 140px 20px 60px;
         }
 
-        header {
+        .page-header {
             text-align: center;
             margin-bottom: 50px;
         }
 
-        h1 {
+        .page-header h1 {
             font-size: 2.2rem;
             font-weight: 700;
             margin-bottom: 15px;
-            color: #1a1a2e;
+            color: var(--dark);
         }
 
         .subtitle {
-            color: #6b7280;
+            color: var(--gray-600);
             font-size: 1.1rem;
         }
 
         .calculator-card {
-            background: #fff;
+            background: var(--white);
             border-radius: 16px;
             padding: 40px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
@@ -63,20 +396,20 @@
         .step-number {
             width: 35px;
             height: 35px;
-            background: #1CBBC8;
+            background: var(--accent);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
             font-size: 1rem;
-            color: #fff;
+            color: var(--white);
         }
 
         .step-title {
             font-size: 1.1rem;
             font-weight: 600;
-            color: #1a1a2e;
+            color: var(--dark);
         }
 
         .tasks-grid {
@@ -88,15 +421,15 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: #f8f9fa;
+            background: var(--gray-100);
             padding: 15px 20px;
             border-radius: 10px;
-            border: 1px solid #e5e7eb;
+            border: 1px solid var(--gray-200);
             transition: all 0.3s ease;
         }
 
         .task-item:hover {
-            border-color: #1CBBC8;
+            border-color: var(--accent);
         }
 
         .task-label {
@@ -120,22 +453,23 @@
         .task-input input {
             width: 70px;
             padding: 10px;
-            border: 1px solid #e5e7eb;
+            border: 1px solid var(--gray-200);
             border-radius: 8px;
-            background: #fff;
-            color: #1a1a2e;
+            background: var(--white);
+            color: var(--dark);
             font-size: 1rem;
             text-align: center;
+            font-family: inherit;
         }
 
         .task-input input:focus {
             outline: none;
-            border-color: #1CBBC8;
+            border-color: var(--accent);
             box-shadow: 0 0 0 3px rgba(28, 187, 200, 0.1);
         }
 
         .task-input span {
-            color: #6b7280;
+            color: var(--gray-600);
             font-size: 0.85rem;
         }
 
@@ -144,10 +478,10 @@
             align-items: center;
             justify-content: center;
             gap: 15px;
-            background: #f8f9fa;
+            background: var(--gray-100);
             padding: 20px;
             border-radius: 10px;
-            border: 1px solid #e5e7eb;
+            border: 1px solid var(--gray-200);
         }
 
         .rate-section label {
@@ -157,17 +491,18 @@
         .rate-section input {
             width: 100px;
             padding: 12px;
-            border: 1px solid #e5e7eb;
+            border: 1px solid var(--gray-200);
             border-radius: 8px;
-            background: #fff;
-            color: #1a1a2e;
+            background: var(--white);
+            color: var(--dark);
             font-size: 1.1rem;
             text-align: center;
+            font-family: inherit;
         }
 
         .rate-section input:focus {
             outline: none;
-            border-color: #1CBBC8;
+            border-color: var(--accent);
             box-shadow: 0 0 0 3px rgba(28, 187, 200, 0.1);
         }
 
@@ -176,17 +511,18 @@
             padding: 18px;
             border: none;
             border-radius: 10px;
-            background: #1CBBC8;
-            color: #fff;
+            background: var(--accent);
+            color: var(--white);
             font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             margin-top: 10px;
+            font-family: inherit;
         }
 
         .calculate-btn:hover {
-            background: #17a5b1;
+            background: var(--accent-dark);
             transform: translateY(-2px);
             box-shadow: 0 10px 30px rgba(28, 187, 200, 0.25);
         }
@@ -207,17 +543,17 @@
         }
 
         .results-card {
-            background: #fff;
+            background: var(--white);
             border-radius: 16px;
             padding: 40px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             text-align: center;
-            border-top: 4px solid #1CBBC8;
+            border-top: 4px solid var(--accent);
         }
 
         .results-title {
             font-size: 1.2rem;
-            color: #6b7280;
+            color: var(--gray-600);
             margin-bottom: 20px;
         }
 
@@ -228,12 +564,12 @@
         .main-stat .number {
             font-size: 4rem;
             font-weight: 800;
-            color: #1CBBC8;
+            color: var(--accent);
         }
 
         .main-stat .label {
             font-size: 1.1rem;
-            color: #6b7280;
+            color: var(--gray-600);
         }
 
         .stats-grid {
@@ -244,7 +580,7 @@
         }
 
         .stat-item {
-            background: #f8f9fa;
+            background: var(--gray-100);
             padding: 20px;
             border-radius: 10px;
         }
@@ -252,12 +588,12 @@
         .stat-item .value {
             font-size: 1.8rem;
             font-weight: 700;
-            color: #1a1a2e;
+            color: var(--dark);
         }
 
         .stat-item .desc {
             font-size: 0.85rem;
-            color: #6b7280;
+            color: var(--gray-600);
             margin-top: 5px;
         }
 
@@ -277,17 +613,17 @@
         .cta-section {
             margin-top: 30px;
             padding-top: 30px;
-            border-top: 1px solid #e5e7eb;
+            border-top: 1px solid var(--gray-200);
         }
 
         .cta-section h3 {
             font-size: 1.3rem;
             margin-bottom: 15px;
-            color: #1a1a2e;
+            color: var(--dark);
         }
 
         .cta-section p {
-            color: #6b7280;
+            color: var(--gray-600);
             margin-bottom: 20px;
         }
 
@@ -295,7 +631,7 @@
             display: inline-block;
             padding: 15px 40px;
             background: #25D366;
-            color: #fff;
+            color: var(--white);
             text-decoration: none;
             border-radius: 10px;
             font-weight: 600;
@@ -311,12 +647,12 @@
 
         .cta-secondary {
             display: block;
-            color: #6b7280;
+            color: var(--gray-600);
             font-size: 0.9rem;
         }
 
         .cta-secondary a {
-            color: #1CBBC8;
+            color: var(--accent);
             text-decoration: none;
         }
 
@@ -324,19 +660,185 @@
             text-decoration: underline;
         }
 
+        /* Footer */
         footer {
-            text-align: center;
-            margin-top: 50px;
-            color: #6b7280;
-            font-size: 0.9rem;
+            background: linear-gradient(180deg, #0d1117 0%, #161b22 100%);
+            color: var(--white);
+            padding: 80px 60px 40px;
         }
 
-        footer strong {
-            color: #1a1a2e;
+        .footer-main {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 80px;
+            margin-bottom: 60px;
         }
 
-        @media (max-width: 600px) {
-            h1 {
+        .footer-brand-section {
+            max-width: 400px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo img {
+            height: 40px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-logo-text {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .footer-description {
+            font-size: 0.95rem;
+            color: var(--gray-400);
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social {
+            width: 44px;
+            height: 44px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .footer-social:hover {
+            border-color: var(--accent);
+            background: rgba(28, 187, 200, 0.1);
+        }
+
+        .footer-social svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--white);
+            transition: fill 0.3s ease;
+        }
+
+        .footer-social:hover svg {
+            fill: var(--accent);
+        }
+
+        .footer-column h4 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--gray-400);
+            margin-bottom: 25px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .footer-column a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 30px;
+        }
+
+        .footer-legal a {
+            color: var(--gray-400);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-legal a:hover {
+            color: var(--white);
+        }
+
+        .footer-copyright {
+            font-size: 0.85rem;
+            color: var(--gray-400);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            nav {
+                padding: 20px 30px;
+            }
+
+            .container {
+                padding: 120px 30px 60px;
+            }
+
+            footer {
+                padding: 60px 30px 30px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .footer-main {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            nav > div:last-child {
+                display: none !important;
+            }
+
+            .page-header h1 {
                 font-size: 1.6rem;
             }
 
@@ -362,27 +864,89 @@
             .main-stat .number {
                 font-size: 3rem;
             }
+
+            .results-card {
+                padding: 25px;
+            }
         }
     </style>
 </head>
 <body>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="../index.html" class="logo">
+            <img src="../logo-pixel-drop.svg" alt="Pixel Drop">
+        </a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="../index.html#services">Services</a></li>
+            <li><a href="../index.html#process">Processus</a></li>
+            <li><a href="../clients.html">Clients</a></li>
+            <li><a href="../blog/">Blog</a></li>
+        </ul>
+        <div style="display: flex; gap: 8px; align-items: center;">
+            <div class="contact-popup-wrapper">
+                <div class="contact-popup popup-below" id="navPopup">
+                    <div class="popup-title">Comment preferez-vous discuter ?</div>
+                    <div class="popup-options">
+                        <a href="https://wa.me/33183641741" class="popup-option whatsapp">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            WhatsApp
+                        </a>
+                        <a href="mailto:contact@pixel-drop.com" class="popup-option email">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
+                            Email
+                        </a>
+                    </div>
+                </div>
+                <button class="nav-cta-secondary btn-popup" style="margin-right: 0; cursor: pointer; border: 1px solid var(--gray-200); background: transparent;" data-popup="navPopup">Discutons</button>
+            </div>
+            <a href="./" class="nav-cta">Simulateur</a>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-menu-links">
+            <li><a href="../index.html#services" class="mobile-link">Services</a></li>
+            <li><a href="../index.html#process" class="mobile-link">Processus</a></li>
+            <li><a href="../clients.html">Clients</a></li>
+            <li><a href="../blog/">Blog</a></li>
+        </ul>
+        <div class="mobile-menu-cta">
+            <a href="https://wa.me/33183641741" class="btn-whatsapp">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Discuter sur WhatsApp
+            </a>
+            <a href="./" class="btn-simulateur">
+                Simulateur de gains
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
     <div class="container">
-        <header>
-            <h1>Combien vous coûtent vos tâches manuelles ?</h1>
-            <p class="subtitle">Calculez en 30 secondes le temps et l'argent que vous perdez chaque année</p>
+        <header class="page-header">
+            <h1>Combien vous coutent vos taches manuelles ?</h1>
+            <p class="subtitle">Calculez en 30 secondes le temps et l'argent que vous perdez chaque annee</p>
         </header>
 
         <div class="calculator-card">
             <div class="step">
                 <div class="step-header">
                     <div class="step-number">1</div>
-                    <div class="step-title">Combien de temps passez-vous sur ces tâches par semaine ?</div>
+                    <div class="step-title">Combien de temps passez-vous sur ces taches par semaine ?</div>
                 </div>
 
                 <div class="tasks-grid">
                     <div class="task-item">
                         <div class="task-label">
-                            <span class="task-name">Répondre aux mêmes emails / questions</span>
+                            <span class="task-name">Repondre aux memes emails / questions</span>
                         </div>
                         <div class="task-input">
                             <input type="number" id="task1" value="3" min="0" max="40">
@@ -392,7 +956,7 @@
 
                     <div class="task-item">
                         <div class="task-label">
-                            <span class="task-name">Copier-coller des données entre outils</span>
+                            <span class="task-name">Copier-coller des donnees entre outils</span>
                         </div>
                         <div class="task-input">
                             <input type="number" id="task2" value="2" min="0" max="40">
@@ -402,7 +966,7 @@
 
                     <div class="task-item">
                         <div class="task-label">
-                            <span class="task-name">Créer des rapports / tableaux de bord</span>
+                            <span class="task-name">Creer des rapports / tableaux de bord</span>
                         </div>
                         <div class="task-input">
                             <input type="number" id="task3" value="2" min="0" max="40">
@@ -422,7 +986,7 @@
 
                     <div class="task-item">
                         <div class="task-label">
-                            <span class="task-name">Saisie de données / admin</span>
+                            <span class="task-name">Saisie de donnees / admin</span>
                         </div>
                         <div class="task-input">
                             <input type="number" id="task5" value="3" min="0" max="40">
@@ -445,28 +1009,28 @@
             <div class="step">
                 <div class="step-header">
                     <div class="step-number">2</div>
-                    <div class="step-title">Quel est votre taux horaire (ou celui de votre équipe) ?</div>
+                    <div class="step-title">Quel est votre taux horaire (ou celui de votre equipe) ?</div>
                 </div>
 
                 <div class="rate-section">
                     <label>Taux horaire :</label>
                     <input type="number" id="hourlyRate" value="50" min="10" max="500">
-                    <span>€ / heure</span>
+                    <span>EUR / heure</span>
                 </div>
             </div>
 
             <button class="calculate-btn" onclick="calculate()">
-                Calculer mon coût caché
+                Calculer mon cout cache
             </button>
         </div>
 
         <div class="results" id="results">
             <div class="results-card">
-                <div class="results-title">Voici ce que ces tâches manuelles vous coûtent</div>
+                <div class="results-title">Voici ce que ces taches manuelles vous coutent</div>
 
                 <div class="main-stat">
-                    <div class="number" id="yearlyLoss">0 €</div>
-                    <div class="label">perdus chaque année</div>
+                    <div class="number" id="yearlyLoss">0 EUR</div>
+                    <div class="label">perdus chaque annee</div>
                 </div>
 
                 <div class="stats-grid">
@@ -475,7 +1039,7 @@
                         <div class="desc">par semaine</div>
                     </div>
                     <div class="stat-item">
-                        <div class="value" id="monthlyLoss">0 €</div>
+                        <div class="value" id="monthlyLoss">0 EUR</div>
                         <div class="desc">par mois</div>
                     </div>
                     <div class="stat-item">
@@ -486,23 +1050,68 @@
 
                 <div class="insight">
                     <div class="insight-text" id="insightText">
-                        C'est l'équivalent de X semaines de travail par an consacrées à des tâches qu'une machine pourrait faire.
+                        C'est l'equivalent de X semaines de travail par an consacrees a des taches qu'une machine pourrait faire.
                     </div>
                 </div>
 
                 <div class="cta-section">
-                    <h3>Récupérez ce temps</h3>
-                    <p>En 30 minutes, je vous montre comment automatiser vos 3 tâches les plus chronophages.<br>Gratuit. Sans engagement.</p>
-                    <a href="https://wa.me/33183641741?text=Bonjour%20!%20J'ai%20utilisé%20votre%20calculateur%20et%20j'aimerais%20discuter%20de%20mes%20possibilités%20d'automatisation." class="cta-btn">Discuter sur WhatsApp</a>
+                    <h3>Recuperez ce temps</h3>
+                    <p>En 30 minutes, je vous montre comment automatiser vos 3 taches les plus chronophages.<br>Gratuit. Sans engagement.</p>
+                    <a href="https://wa.me/33183641741?text=Bonjour%20!%20J'ai%20utilise%20votre%20calculateur%20et%20j'aimerais%20discuter%20de%20mes%20possibilites%20d'automatisation." class="cta-btn">Discuter sur WhatsApp</a>
                     <span class="cta-secondary">ou par email : <a href="mailto:contact@pixel-drop.com?subject=Demande d'audit automatisation">contact@pixel-drop.com</a></span>
                 </div>
             </div>
         </div>
-
-        <footer>
-            <p><strong>Pixel Drop</strong> — Intégrations IA & Automatisations</p>
-        </footer>
     </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-main">
+            <div class="footer-brand-section">
+                <div class="footer-logo">
+                    <img src="../logo-pixel-drop.svg" alt="Pixel Drop">
+                </div>
+                <p class="footer-description">On connecte vos outils, on automatise vos taches. Gagnez du temps sur ce qui compte vraiment avec Pixel Drop.</p>
+                <div class="footer-socials">
+                    <a href="https://www.linkedin.com/company/93845156/" class="footer-social" target="_blank" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                    <a href="https://wa.me/33183641741" class="footer-social" target="_blank" aria-label="WhatsApp">
+                        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="../index.html#services">Taches automatisees</a></li>
+                    <li><a href="../index.html#services">Integrations IA</a></li>
+                    <li><a href="../index.html#services">Reponses automatiques</a></li>
+                    <li><a href="./">Simulateur de gains</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="tel:+33183641741">01 83 64 17 41</a></li>
+                    <li><a href="mailto:contact@pixel-drop.com">contact@pixel-drop.com</a></li>
+                    <li><a href="https://wa.me/33183641741" target="_blank">WhatsApp</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-legal">
+                <a href="../mentions-legales.html">Mentions legales</a>
+                <a href="../politique-confidentialite.html">Politique de confidentialite</a>
+            </div>
+            <div class="footer-copyright">
+                &copy; 2026 Pixel Drop. Tous droits reserves.
+            </div>
+        </div>
+    </footer>
 
     <script>
         function calculate() {
@@ -522,19 +1131,19 @@
             const weeksEquivalent = Math.round(yearlyHours / 35);
 
             document.getElementById('weeklyHours').textContent = weeklyHours + 'h';
-            document.getElementById('monthlyLoss').textContent = formatNumber(Math.round(monthlyLoss)) + ' €';
+            document.getElementById('monthlyLoss').textContent = formatNumber(Math.round(monthlyLoss)) + ' EUR';
             document.getElementById('yearlyHours').textContent = yearlyHours + 'h';
-            document.getElementById('yearlyLoss').textContent = formatNumber(Math.round(yearlyLoss)) + ' €';
+            document.getElementById('yearlyLoss').textContent = formatNumber(Math.round(yearlyLoss)) + ' EUR';
 
             let insight = '';
             if (yearlyLoss > 30000) {
-                insight = `C'est l'équivalent de ${weeksEquivalent} semaines de travail par an. Vous pourriez embaucher quelqu'un à temps partiel pour ce prix... ou automatiser une fois pour toutes.`;
+                insight = `C'est l'equivalent de ${weeksEquivalent} semaines de travail par an. Vous pourriez embaucher quelqu'un a temps partiel pour ce prix... ou automatiser une fois pour toutes.`;
             } else if (yearlyLoss > 15000) {
-                insight = `${weeksEquivalent} semaines de travail par an sur des tâches répétitives. C'est du temps que vous pourriez investir dans la croissance de votre entreprise.`;
+                insight = `${weeksEquivalent} semaines de travail par an sur des taches repetitives. C'est du temps que vous pourriez investir dans la croissance de votre entreprise.`;
             } else if (yearlyLoss > 5000) {
-                insight = `${yearlyHours} heures par an, soit ${weeksEquivalent} semaines. Des automatisations ciblées pourraient vous libérer rapidement.`;
+                insight = `${yearlyHours} heures par an, soit ${weeksEquivalent} semaines. Des automatisations ciblees pourraient vous liberer rapidement.`;
             } else {
-                insight = `Même ${yearlyHours} heures par an, c'est du temps précieux. Quelques automatisations simples pourraient faire la différence.`;
+                insight = `Meme ${yearlyHours} heures par an, c'est du temps precieux. Quelques automatisations simples pourraient faire la difference.`;
             }
             document.getElementById('insightText').textContent = insight;
 
@@ -552,6 +1161,63 @@
                 if (e.key === 'Enter') calculate();
             });
         });
+
+        // Contact popups
+        const popupButtons = document.querySelectorAll('.btn-popup');
+        const popups = document.querySelectorAll('.contact-popup');
+
+        popupButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const popupId = btn.getAttribute('data-popup');
+                const popup = document.getElementById(popupId);
+
+                // Close all other popups
+                popups.forEach(p => {
+                    if (p.id !== popupId) p.classList.remove('active');
+                });
+
+                popup.classList.toggle('active');
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            popups.forEach(popup => {
+                if (!popup.contains(e.target) && !e.target.classList.contains('btn-popup')) {
+                    popup.classList.remove('active');
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Navbar background on scroll
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.1)';
+            } else {
+                nav.style.boxShadow = 'none';
+            }
+        });
     </script>
+
 </body>
 </html>

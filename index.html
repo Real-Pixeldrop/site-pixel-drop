@@ -892,13 +892,30 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+            background: linear-gradient(180deg, var(--white) 0%, #f0fdfd 100%);
+        }
+
+        /* Grand dégradé radial arrière-plan */
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 1400px;
+            height: 1400px;
+            background: radial-gradient(circle, rgba(28, 187, 200, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .cta > * {
+            position: relative;
+            z-index: 1;
         }
 
         .cta-bg {
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at center, rgba(28, 187, 200, 0.1) 0%, transparent 60%);
-            pointer-events: none;
+            display: none;
         }
 
         .cta-content {
