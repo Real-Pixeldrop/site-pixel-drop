@@ -63,20 +63,6 @@
             overflow-x: hidden;
         }
 
-        /* Grain subtil global */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 9999;
-            opacity: 0.03;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-        }
-
         ::selection {
             background: var(--accent);
             color: var(--white);
@@ -407,6 +393,25 @@
             overflow: hidden;
         }
 
+        /* Dégradé radial arrière-plan */
+        .problem::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -200px;
+            transform: translateY(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(28, 187, 200, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .problem > * {
+            position: relative;
+            z-index: 1;
+        }
+
         .problem-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -491,31 +496,23 @@
             overflow: hidden;
         }
 
-        /* Blobs flous style Stripe/Linear */
+        /* Dégradé radial arrière-plan */
         .services::before {
             content: '';
             position: absolute;
-            top: -200px;
-            right: -200px;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(28, 187, 200, 0.15) 0%, transparent 70%);
-            border-radius: 50%;
-            filter: blur(80px);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 1200px;
+            height: 1200px;
+            background: radial-gradient(circle, rgba(28, 187, 200, 0.08) 0%, transparent 50%);
             pointer-events: none;
+            z-index: 0;
         }
 
-        .services::after {
-            content: '';
-            position: absolute;
-            bottom: -150px;
-            left: -150px;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(28, 187, 200, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            filter: blur(60px);
-            pointer-events: none;
+        .services > * {
+            position: relative;
+            z-index: 1;
         }
 
         .section-header {
@@ -653,6 +650,7 @@
             padding: 150px 60px;
             background: var(--gray-100);
             position: relative;
+            overflow: hidden;
         }
 
         /* Grille de points subtile */
@@ -660,9 +658,15 @@
             content: '';
             position: absolute;
             inset: 0;
-            background-image: radial-gradient(circle, rgba(0, 0, 0, 0.08) 1px, transparent 1px);
-            background-size: 24px 24px;
+            background-image: radial-gradient(circle, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+            background-size: 30px 30px;
             pointer-events: none;
+            z-index: 0;
+        }
+
+        .process > * {
+            position: relative;
+            z-index: 1;
         }
 
         .process-steps {
@@ -728,27 +732,23 @@
             overflow: hidden;
         }
 
-        /* Dégradés radiaux dans les coins */
+        /* Dégradé radial arrière-plan */
         .results::before {
             content: '';
             position: absolute;
-            top: -100px;
-            left: -100px;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(28, 187, 200, 0.2) 0%, transparent 60%);
+            bottom: -300px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1000px;
+            height: 1000px;
+            background: radial-gradient(circle, rgba(28, 187, 200, 0.12) 0%, transparent 50%);
             pointer-events: none;
+            z-index: 0;
         }
 
-        .results::after {
-            content: '';
-            position: absolute;
-            bottom: -100px;
-            right: -100px;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(28, 187, 200, 0.15) 0%, transparent 60%);
-            pointer-events: none;
+        .results > * {
+            position: relative;
+            z-index: 1;
         }
 
         .results-header {
