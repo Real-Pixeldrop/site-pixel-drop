@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Pixel Drop | Automatisation & IA pour PME</title>
+    <meta name="description" content="Conseils pratiques pour automatiser votre PME : facturation, CRM, reporting, intégrations IA. Guides et tutoriels par Pixel Drop.">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pixel-drop.com/blog/">
+    <meta property="og:title" content="Blog Pixel Drop - Automatisation & IA pour PME">
+    <meta property="og:description" content="Conseils pratiques pour automatiser votre PME : facturation, CRM, reporting, intégrations IA.">
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --accent: #1CBBC8;
+            --accent-dark: #17a5b1;
+            --dark: #0a0a0a;
+            --gray-600: #6b7280;
+            --gray-400: #9ca3af;
+            --gray-200: #e5e7eb;
+            --gray-100: #f3f4f6;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--white);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .logo img {
+            height: 38px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--gray-600);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--dark);
+        }
+
+        .nav-cta {
+            background: var(--dark);
+            color: var(--white);
+            padding: 12px 28px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background: var(--accent);
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 160px 60px 80px;
+            max-width: 900px;
+        }
+
+        .page-header h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 25px;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: var(--gray-600);
+            max-width: 700px;
+        }
+
+        /* Blog Grid */
+        .blog-section {
+            padding: 0 60px 100px;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .blog-card {
+            display: flex;
+            flex-direction: column;
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--gray-200);
+            transition: all 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-color: transparent;
+        }
+
+        .blog-card-image {
+            aspect-ratio: 16/9;
+            overflow: hidden;
+        }
+
+        .blog-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .blog-card:hover .blog-card-image img {
+            transform: scale(1.05);
+        }
+
+        .blog-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .blog-placeholder svg {
+            width: 48px;
+            height: 48px;
+            opacity: 0.8;
+        }
+
+        .placeholder-blue { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .placeholder-blue svg { stroke: #fff; }
+
+        .placeholder-green { background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); }
+        .placeholder-green svg { stroke: #fff; }
+
+        .placeholder-orange { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .placeholder-orange svg { stroke: #fff; }
+
+        .blog-card-content {
+            padding: 30px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .blog-card h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 15px;
+        }
+
+        .blog-card h2 a {
+            color: var(--dark);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .blog-card h2 a:hover {
+            color: var(--accent);
+        }
+
+        .blog-card-excerpt {
+            font-size: 0.95rem;
+            color: var(--gray-600);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+        .blog-card-meta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 0.85rem;
+            color: var(--gray-400);
+        }
+
+        .blog-card-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .blog-card-meta svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Newsletter CTA */
+        .newsletter-section {
+            padding: 80px 60px;
+            background: var(--dark);
+            color: var(--white);
+        }
+
+        .newsletter-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .newsletter-content h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .newsletter-content p {
+            color: var(--gray-400);
+            margin-bottom: 30px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 15px;
+            max-width: 450px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 16px 24px;
+            border-radius: 100px;
+            border: none;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .newsletter-form button {
+            background: var(--accent);
+            color: var(--white);
+            padding: 16px 32px;
+            border-radius: 100px;
+            border: none;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 40px 60px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer p {
+            color: var(--gray-400);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 6px;
+            width: 44px;
+            height: 44px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--dark);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--white);
+            z-index: 999;
+            padding: 120px 40px 40px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mobile-menu-links li {
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .mobile-menu-links a {
+            display: block;
+            padding: 20px 0;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--dark);
+            text-decoration: none;
+        }
+
+        .mobile-menu-cta {
+            margin-top: 40px;
+        }
+
+        .mobile-menu-cta a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 18px 30px;
+            border-radius: 100px;
+            font-weight: 600;
+            text-decoration: none;
+            background: var(--dark);
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .blog-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            nav {
+                padding: 20px 30px;
+            }
+
+            .nav-links, nav > a:last-child {
+                display: none;
+            }
+
+            .page-header, .blog-section, .newsletter-section {
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="/" class="logo">
+            <img src="/logo-pixel-drop.svg" alt="Pixel Drop">
+        </a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="/#services">Services</a></li>
+            <li><a href="/#process">Processus</a></li>
+            <li><a href="/clients.html">Clients</a></li>
+            <li><a href="/blog/">Blog</a></li>
+        </ul>
+        <a href="https://wa.me/33183641741" class="nav-cta">Discutons</a>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-menu-links">
+            <li><a href="/#services">Services</a></li>
+            <li><a href="/#process">Processus</a></li>
+            <li><a href="/clients.html">Clients</a></li>
+            <li><a href="/blog/">Blog</a></li>
+        </ul>
+        <div class="mobile-menu-cta">
+            <a href="https://wa.me/33183641741">Discutons</a>
+        </div>
+    </div>
+
+    <header class="page-header">
+        <h1>Blog</h1>
+        <p>Guides pratiques, tutoriels et conseils pour automatiser votre PME et gagner du temps au quotidien.</p>
+    </header>
+
+    <section class="blog-section">
+        <div class="blog-grid">
+
+            <!-- Article 1 -->
+            <article class="blog-card">
+                <div class="blog-card-image">
+                    <div class="blog-placeholder placeholder-blue">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                    </div>
+                </div>
+                <div class="blog-card-content">
+                    <span class="blog-card-tag">Facturation</span>
+                    <h2><a href="/blog/automatiser-facturation-chorus-pro.html">Comment automatiser sa facturation Chorus Pro</a></h2>
+                    <p class="blog-card-excerpt">Guide complet pour connecter votre ERP ou logiciel de facturation à Chorus Pro et envoyer vos factures automatiquement.</p>
+                    <div class="blog-card-meta">
+                        <span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                            8 min
+                        </span>
+                        <span>Janvier 2026</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article 2 -->
+            <article class="blog-card">
+                <div class="blog-card-image">
+                    <div class="blog-placeholder placeholder-green">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+                    </div>
+                </div>
+                <div class="blog-card-content">
+                    <span class="blog-card-tag">Productivit&eacute;</span>
+                    <h2><a href="/blog/5-taches-automatiser-pme.html">5 t&acirc;ches que chaque PME devrait automatiser</a></h2>
+                    <p class="blog-card-excerpt">Les automatisations les plus rentables pour une PME : saisie de donn&eacute;es, relances clients, reporting, et plus encore.</p>
+                    <div class="blog-card-meta">
+                        <span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                            6 min
+                        </span>
+                        <span>Janvier 2026</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article 3 -->
+            <article class="blog-card">
+                <div class="blog-card-image">
+                    <div class="blog-placeholder placeholder-orange">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                    </div>
+                </div>
+                <div class="blog-card-content">
+                    <span class="blog-card-tag">Int&eacute;gration</span>
+                    <h2><a href="/blog/connecter-sage-crm.html">Connecter Sage &agrave; votre CRM : guide complet</a></h2>
+                    <p class="blog-card-excerpt">Synchronisez vos donn&eacute;es comptables avec votre CRM pour donner &agrave; vos commerciaux les bonnes infos en temps r&eacute;el.</p>
+                    <div class="blog-card-meta">
+                        <span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                            10 min
+                        </span>
+                        <span>Janvier 2026</span>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <section class="newsletter-section">
+        <div class="newsletter-content">
+            <h2>Restez inform&eacute;</h2>
+            <p>Recevez nos meilleurs conseils d'automatisation directement dans votre boîte mail. Pas de spam, que du concret.</p>
+            <form class="newsletter-form" action="#" method="POST">
+                <input type="email" placeholder="votre@email.com" required>
+                <button type="submit">S'inscrire</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Pixel Drop. Tous droits r&eacute;serv&eacute;s. | <a href="/">Retour au site</a></p>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+    </script>
+
+</body>
+</html>
