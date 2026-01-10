@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#1a1a1a"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Decorative circles -->
+  <circle cx="1100" cy="100" r="200" fill="#1CBBC8" opacity="0.1"/>
+  <circle cx="100" cy="530" r="150" fill="#1CBBC8" opacity="0.08"/>
+
+  <!-- Logo dots -->
+  <circle cx="100" cy="80" r="20" fill="#1CBBC8"/>
+  <circle cx="145" cy="65" r="12" fill="#1CBBC8" opacity="0.7"/>
+  <circle cx="145" cy="95" r="8" fill="#1CBBC8" opacity="0.4"/>
+
+  <!-- Title -->
+  <text x="100" y="280" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="700" fill="#ffffff">Pixel Drop</text>
+
+  <!-- Subtitle -->
+  <text x="100" y="360" font-family="system-ui, -apple-system, sans-serif" font-size="36" fill="#9ca3af">Automatisation &amp; IA pour PME</text>
+
+  <!-- Value prop -->
+  <text x="100" y="450" font-family="system-ui, -apple-system, sans-serif" font-size="28" fill="#1CBBC8">On connecte vos outils. Ils font le reste.</text>
+
+  <!-- Stats -->
+  <text x="100" y="540" font-family="system-ui, -apple-system, sans-serif" font-size="24" fill="#6b7280">10h+ gagnées/semaine  |  -80% erreurs  |  ROI garanti</text>
+
+  <!-- Accent line -->
+  <rect x="100" y="500" width="200" height="4" rx="2" fill="#1CBBC8"/>
+</svg>

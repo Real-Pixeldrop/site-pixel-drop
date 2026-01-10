@@ -4,6 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pixel Drop — Automatisation & IA pour PME</title>
+    <meta name="description" content="Pixel Drop connecte vos outils métier (Sage, Chorus Pro, CRM, ERP) et automatise vos tâches répétitives. Gagnez 10h+ par semaine. Devis gratuit.">
+    <meta name="keywords" content="automatisation, IA, PME, intégration, Sage, Chorus Pro, n8n, workflow, productivité">
+    <meta name="author" content="Pixel Drop">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pixel-drop.com/">
+    <meta property="og:title" content="Pixel Drop — Automatisation & IA pour PME">
+    <meta property="og:description" content="On connecte vos outils métier et on automatise vos tâches répétitives. Gagnez 10h+ par semaine.">
+    <meta property="og:image" content="https://pixel-drop.com/og-image.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://pixel-drop.com/">
+    <meta name="twitter:title" content="Pixel Drop — Automatisation & IA pour PME">
+    <meta name="twitter:description" content="On connecte vos outils métier et on automatise vos tâches répétitives. Gagnez 10h+ par semaine.">
+    <meta name="twitter:image" content="https://pixel-drop.com/og-image.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="apple-touch-icon" href="favicon.svg">
+    <meta name="theme-color" content="#1CBBC8">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Cabinet+Grotesk:wght@800;900&display=swap" rel="stylesheet">
@@ -1188,9 +1212,131 @@
             }
         }
 
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 6px;
+            width: 44px;
+            height: 44px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--dark);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--white);
+            z-index: 999;
+            padding: 120px 40px 40px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .mobile-menu-links li {
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .mobile-menu-links a {
+            display: block;
+            padding: 20px 0;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--dark);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu-links a:hover {
+            color: var(--accent);
+        }
+
+        .mobile-menu-cta {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .mobile-menu-cta a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 18px 30px;
+            border-radius: 100px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .mobile-menu-cta .btn-whatsapp {
+            background: #25D366;
+            color: white;
+        }
+
+        .mobile-menu-cta .btn-simulateur {
+            background: var(--dark);
+            color: white;
+        }
+
         @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
             .nav-links {
                 display: none;
+            }
+
+            nav > div:last-child {
+                display: none !important;
             }
 
             .hero h1 {
@@ -1234,6 +1380,11 @@
         <a href="#" class="logo">
             <img src="logo-pixel-drop.svg" alt="Pixel Drop">
         </a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
         <ul class="nav-links">
             <li><a href="#services">Services</a></li>
             <li><a href="#process">Processus</a></li>
@@ -1260,6 +1411,25 @@
             <a href="simulateur/" class="nav-cta" target="_blank">Simulateur</a>
         </div>
     </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-menu-links">
+            <li><a href="#services" class="mobile-link">Services</a></li>
+            <li><a href="#process" class="mobile-link">Processus</a></li>
+            <li><a href="clients.html">Clients</a></li>
+            <li><a href="#results" class="mobile-link">Résultats</a></li>
+        </ul>
+        <div class="mobile-menu-cta">
+            <a href="https://wa.me/33183641741" class="btn-whatsapp">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Discuter sur WhatsApp
+            </a>
+            <a href="simulateur/" class="btn-simulateur" target="_blank">
+                Simulateur de gains
+            </a>
+        </div>
+    </div>
 
     <!-- Hero -->
     <section class="hero">
@@ -1604,34 +1774,34 @@
         // Testimonial rotation
         const testimonials = [
             {
-                text: "On passait 2h par jour à ressaisir les mêmes infos. Maintenant c'est automatique, on se concentre sur nos clients.",
-                avatar: "JD",
-                name: "Jean D.",
-                role: "Gérant, PME Logistique"
+                text: "Avant je passais mes lundis matin à copier les commandes du week-end dans Sage. Maintenant je prends mon café tranquille, c'est déjà fait.",
+                avatar: "NB",
+                name: "Nicolas Bertrand",
+                role: "Gérant — Distrib'Pro 45"
             },
             {
-                text: "Les factures Chorus se génèrent toutes seules depuis notre ERP. Fini les erreurs de saisie et les relances.",
-                avatar: "MR",
-                name: "Marie R.",
-                role: "DAF, Entreprise BTP"
+                text: "On avait 3 semaines de retard sur Chorus. Depuis l'automatisation, les factures partent le jour même. Le comptable n'en revient toujours pas.",
+                avatar: "SF",
+                name: "Stéphanie Fournier",
+                role: "Directrice Administrative — Batirénov"
             },
             {
-                text: "On a connecté Sage à notre CRM. Les commerciaux ont enfin les bons prix en temps réel.",
-                avatar: "PL",
-                name: "Philippe L.",
-                role: "Directeur Commercial, Négoce"
+                text: "Mes commerciaux passaient 1h par jour à chercher les bons tarifs. Maintenant ils vendent. On a fait +18% au T3.",
+                avatar: "MV",
+                name: "Marc Villeneuve",
+                role: "Directeur Commercial — Négoce Martin"
             },
             {
-                text: "Avant on perdait des commandes par manque de stock. Maintenant les alertes sont automatiques.",
-                avatar: "SB",
-                name: "Sophie B.",
-                role: "Responsable Supply Chain"
+                text: "Le premier mois, on a détecté 12 ruptures de stock avant qu'elles arrivent. Avant, on les découvrait quand le client appelait furieux.",
+                avatar: "CL",
+                name: "Caroline Lambert",
+                role: "Resp. Logistique — MediStock"
             },
             {
-                text: "Nos déclarations URSSAF sont préremplies automatiquement. Un gain de temps énorme chaque mois.",
-                avatar: "TC",
-                name: "Thomas C.",
-                role: "Expert-Comptable"
+                text: "J'ai 47 clients en paie. Les DSN se préremplissent toutes seules maintenant. Je peux enfin me concentrer sur le conseil.",
+                avatar: "PD",
+                name: "Patrick Dumont",
+                role: "Expert-Comptable — Cabinet Dumont & Associés"
             }
         ];
 
@@ -1707,6 +1877,25 @@
                 if (!popup.contains(e.target) && !e.target.classList.contains('btn-popup')) {
                     popup.classList.remove('active');
                 }
+            });
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
             });
         });
     </script>
