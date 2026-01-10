@@ -11,14 +11,16 @@
     <meta property="og:url" content="https://pixel-drop.com/blog/automatiser-facturation-chorus-pro.html">
     <meta property="og:title" content="Comment automatiser sa facturation Chorus Pro">
     <meta property="og:description" content="Guide complet pour automatiser l'envoi de vos factures sur Chorus Pro.">
+    <meta property="og:image" content="https://pixel-drop.com/blog/images/chorus-pro.svg">
 
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --accent: #1CBBC8;
+            --accent-dark: #17a5b1;
             --dark: #0a0a0a;
             --gray-600: #6b7280;
             --gray-400: #9ca3af;
@@ -36,6 +38,7 @@
             line-height: 1.8;
         }
 
+        /* Navigation */
         nav {
             position: fixed;
             top: 0;
@@ -46,12 +49,52 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
-        .logo img { height: 38px; }
+        .logo img { height: 38px; width: auto; }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--gray-600);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover { color: var(--dark); }
+
+        .nav-right {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .nav-cta-secondary {
+            color: var(--dark);
+            padding: 12px 24px;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 1px solid var(--gray-200);
+            background: transparent;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
 
         .nav-cta {
             background: var(--dark);
@@ -60,13 +103,90 @@
             border-radius: 100px;
             text-decoration: none;
             font-weight: 600;
+            font-size: 0.95rem;
             transition: all 0.3s ease;
         }
 
-        .nav-cta:hover { background: var(--accent); }
+        .nav-cta:hover {
+            background: var(--accent);
+        }
 
+        /* Contact Popup */
+        .contact-popup-wrapper { position: relative; display: inline-block; }
+
+        .contact-popup {
+            position: absolute;
+            top: calc(100% + 15px);
+            left: 50%;
+            transform: translateX(-50%) translateY(-10px);
+            background: var(--white);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.25s ease;
+            min-width: 280px;
+            z-index: 100;
+        }
+
+        .contact-popup.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .contact-popup::after {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid var(--white);
+        }
+
+        .popup-title { font-size: 0.9rem; color: var(--gray-600); margin-bottom: 15px; text-align: center; }
+        .popup-options { display: flex; gap: 10px; }
+
+        .popup-option {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .popup-option.whatsapp { background: #25D366; color: white; }
+        .popup-option.whatsapp:hover { background: #20bd5a; transform: translateY(-2px); }
+        .popup-option.email { background: var(--gray-100); color: var(--dark); }
+        .popup-option.email:hover { background: var(--gray-200); transform: translateY(-2px); }
+        .popup-option svg { width: 18px; height: 18px; }
+
+        /* Hero Image */
+        .article-hero {
+            width: 100%;
+            height: 400px;
+            margin-top: 78px;
+            overflow: hidden;
+        }
+
+        .article-hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Article Header */
         .article-header {
-            padding: 160px 60px 60px;
+            padding: 60px 60px 40px;
             max-width: 800px;
             margin: 0 auto;
         }
@@ -102,6 +222,7 @@
             padding-left: 25px;
         }
 
+        /* Article Content */
         .article-content {
             max-width: 800px;
             margin: 0 auto;
@@ -144,9 +265,6 @@
         .highlight-box h4 {
             font-size: 1.1rem;
             margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
 
         .cta-box {
@@ -185,6 +303,7 @@
             box-shadow: 0 10px 30px rgba(28, 187, 200, 0.3);
         }
 
+        /* Footer */
         footer {
             background: var(--dark);
             color: var(--white);
@@ -195,20 +314,156 @@
         footer p { color: var(--gray-400); font-size: 0.9rem; }
         footer a { color: var(--white); text-decoration: none; }
 
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 6px;
+            width: 44px;
+            height: 44px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--dark);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+        .menu-toggle.active span:nth-child(2) { opacity: 0; }
+        .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--white);
+            z-index: 999;
+            padding: 120px 40px 40px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu.active { opacity: 1; visibility: visible; }
+
+        .mobile-menu-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mobile-menu-links li { border-bottom: 1px solid var(--gray-200); }
+
+        .mobile-menu-links a {
+            display: block;
+            padding: 20px 0;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--dark);
+            text-decoration: none;
+        }
+
+        .mobile-menu-cta {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .mobile-menu-cta a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 18px 30px;
+            border-radius: 100px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .mobile-menu-cta .btn-whatsapp { background: #25D366; color: white; }
+        .mobile-menu-cta .btn-simulateur { background: var(--dark); color: white; }
+
         @media (max-width: 768px) {
+            .menu-toggle { display: flex; }
+            .mobile-menu { display: block; }
             nav { padding: 20px 30px; }
+            .nav-links, .nav-right { display: none; }
             .article-header, .article-content { padding-left: 30px; padding-right: 30px; }
+            .article-hero { height: 250px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Navigation -->
     <nav>
-        <a href="/" class="logo">
-            <img src="/logo-pixel-drop.svg" alt="Pixel Drop">
+        <a href="../index.html" class="logo">
+            <img src="../logo-pixel-drop.svg" alt="Pixel Drop">
         </a>
-        <a href="https://wa.me/33183641741" class="nav-cta">Discutons</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="../index.html#services">Services</a></li>
+            <li><a href="../index.html#process">Processus</a></li>
+            <li><a href="../clients.html">Clients</a></li>
+            <li><a href="./">Blog</a></li>
+        </ul>
+        <div class="nav-right">
+            <div class="contact-popup-wrapper">
+                <div class="contact-popup" id="navPopup">
+                    <div class="popup-title">Comment preferez-vous discuter ?</div>
+                    <div class="popup-options">
+                        <a href="https://wa.me/33183641741" class="popup-option whatsapp">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            WhatsApp
+                        </a>
+                        <a href="mailto:contact@pixel-drop.com" class="popup-option email">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
+                            Email
+                        </a>
+                    </div>
+                </div>
+                <button class="nav-cta-secondary" id="navBtn">Discutons</button>
+            </div>
+            <a href="../simulateur/" class="nav-cta">Simulateur</a>
+        </div>
     </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-menu-links">
+            <li><a href="../index.html#services">Services</a></li>
+            <li><a href="../index.html#process">Processus</a></li>
+            <li><a href="../clients.html">Clients</a></li>
+            <li><a href="./">Blog</a></li>
+        </ul>
+        <div class="mobile-menu-cta">
+            <a href="https://wa.me/33183641741" class="btn-whatsapp">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Discuter sur WhatsApp
+            </a>
+            <a href="../simulateur/" class="btn-simulateur">Simulateur de gains</a>
+        </div>
+    </div>
+
+    <!-- Hero Image -->
+    <div class="article-hero">
+        <img src="images/chorus-pro.svg" alt="Automatisation Chorus Pro">
+    </div>
 
     <header class="article-header">
         <div class="article-meta">
@@ -217,82 +472,82 @@
             <span>Janvier 2026</span>
         </div>
         <h1>Comment automatiser sa facturation Chorus Pro</h1>
-        <p class="article-intro">Vous passez des heures chaque semaine à ressaisir vos factures dans Chorus Pro ? Voici comment automatiser tout le processus et ne plus jamais avoir de retard.</p>
+        <p class="article-intro">Vous passez des heures chaque semaine a ressaisir vos factures dans Chorus Pro ? Voici comment automatiser tout le processus et ne plus jamais avoir de retard.</p>
     </header>
 
     <article class="article-content">
 
         <h2>Pourquoi automatiser Chorus Pro ?</h2>
-        <p>Si vous travaillez avec le secteur public en France, vous connaissez Chorus Pro. Cette plateforme est obligatoire pour facturer l'&Eacute;tat, les collectivit&eacute;s et les &eacute;tablissements publics.</p>
-        <p>Le probl&egrave;me ? La saisie manuelle est fastidieuse :</p>
+        <p>Si vous travaillez avec le secteur public en France, vous connaissez Chorus Pro. Cette plateforme est obligatoire pour facturer l'Etat, les collectivites et les etablissements publics.</p>
+        <p>Le probleme ? La saisie manuelle est fastidieuse :</p>
         <ul>
             <li>Double saisie entre votre logiciel de facturation et Chorus</li>
-            <li>Risques d'erreurs sur les montants, les r&eacute;f&eacute;rences, les SIRET</li>
-            <li>Retards de paiement si une facture est mal format&eacute;e</li>
-            <li>Temps perdu &agrave; v&eacute;rifier les statuts de chaque facture</li>
+            <li>Risques d'erreurs sur les montants, les references, les SIRET</li>
+            <li>Retards de paiement si une facture est mal formatee</li>
+            <li>Temps perdu a verifier les statuts de chaque facture</li>
         </ul>
 
         <div class="highlight-box">
             <h4>Le saviez-vous ?</h4>
-            <p>Une PME qui facture r&eacute;guli&egrave;rement le secteur public passe en moyenne <strong>3 &agrave; 5 heures par semaine</strong> sur la gestion Chorus Pro. C'est plus de 200 heures par an.</p>
+            <p>Une PME qui facture regulierement le secteur public passe en moyenne <strong>3 a 5 heures par semaine</strong> sur la gestion Chorus Pro. C'est plus de 200 heures par an.</p>
         </div>
 
         <h2>Les 3 approches pour automatiser</h2>
 
-        <h3>1. L'int&eacute;gration native (si disponible)</h3>
+        <h3>1. L'integration native (si disponible)</h3>
         <p>Certains logiciels de facturation proposent une connexion directe avec Chorus Pro :</p>
         <ul>
             <li><strong>Sage</strong> : Module Chorus Pro disponible</li>
-            <li><strong>EBP</strong> : Int&eacute;gration dans les versions Pro</li>
+            <li><strong>EBP</strong> : Integration dans les versions Pro</li>
             <li><strong>Cegid</strong> : Connecteur natif</li>
             <li><strong>Pennylane</strong> : Envoi direct possible</li>
         </ul>
-        <p>Avantage : simple &agrave; activer. Inconv&eacute;nient : souvent limit&eacute; aux fonctions de base.</p>
+        <p>Avantage : simple a activer. Inconvenient : souvent limite aux fonctions de base.</p>
 
         <h3>2. L'API Chorus Pro</h3>
         <p>Chorus Pro expose une API qui permet d'automatiser :</p>
         <ul>
             <li>L'envoi de factures au format Factur-X</li>
-            <li>La r&eacute;cup&eacute;ration des statuts</li>
+            <li>La recuperation des statuts</li>
             <li>La gestion des rejets et corrections</li>
         </ul>
-        <p>Cette approche demande un d&eacute;veloppement technique mais offre une flexibilit&eacute; totale.</p>
+        <p>Cette approche demande un developpement technique mais offre une flexibilite totale.</p>
 
         <h3>3. L'automatisation avec un connecteur (notre recommandation)</h3>
-        <p>La solution la plus efficace pour une PME : utiliser un outil d'automatisation comme n8n ou Make pour cr&eacute;er un pont entre votre ERP et Chorus Pro.</p>
+        <p>La solution la plus efficace pour une PME : utiliser un outil d'automatisation comme n8n ou Make pour creer un pont entre votre ERP et Chorus Pro.</p>
         <p>Le flux typique :</p>
         <ol>
-            <li>Une facture est valid&eacute;e dans votre ERP</li>
-            <li>Le connecteur d&eacute;tecte la nouvelle facture</li>
-            <li>Il g&eacute;n&egrave;re le fichier Factur-X conforme</li>
+            <li>Une facture est validee dans votre ERP</li>
+            <li>Le connecteur detecte la nouvelle facture</li>
+            <li>Il genere le fichier Factur-X conforme</li>
             <li>Il l'envoie automatiquement sur Chorus Pro</li>
-            <li>Il met &agrave; jour le statut dans votre ERP</li>
+            <li>Il met a jour le statut dans votre ERP</li>
         </ol>
 
         <div class="highlight-box">
-            <h4>R&eacute;sultat client</h4>
-            <p>"Avant, notre comptable passait 2h chaque jour sur Chorus. Maintenant, tout part automatiquement. On a r&eacute;duit les erreurs de 95% et on est pay&eacute; 15 jours plus t&ocirc;t en moyenne."</p>
-            <p><em>— St&eacute;phanie F., DAF d'une entreprise BTP</em></p>
+            <h4>Resultat client</h4>
+            <p>"Avant, notre comptable passait 2h chaque jour sur Chorus. Maintenant, tout part automatiquement. On a reduit les erreurs de 95% et on est paye 15 jours plus tot en moyenne."</p>
+            <p><em>— Stephanie F., DAF d'une entreprise BTP</em></p>
         </div>
 
-        <h2>Les pi&egrave;ges &agrave; &eacute;viter</h2>
+        <h2>Les pieges a eviter</h2>
 
-        <h3>Ne pas g&eacute;rer les rejets</h3>
-        <p>Chorus Pro rejette les factures mal format&eacute;es. Votre automatisation doit inclure un syst&egrave;me d'alerte pour traiter rapidement les rejets.</p>
+        <h3>Ne pas gerer les rejets</h3>
+        <p>Chorus Pro rejette les factures mal formatees. Votre automatisation doit inclure un systeme d'alerte pour traiter rapidement les rejets.</p>
 
-        <h3>Oublier la r&eacute;conciliation</h3>
-        <p>Assurez-vous que les statuts Chorus (d&eacute;pos&eacute;e, valid&eacute;e, pay&eacute;e) remontent dans votre comptabilit&eacute;. Sinon vous aurez deux v&eacute;rit&eacute;s diff&eacute;rentes.</p>
+        <h3>Oublier la reconciliation</h3>
+        <p>Assurez-vous que les statuts Chorus (deposee, validee, payee) remontent dans votre comptabilite. Sinon vous aurez deux verites differentes.</p>
 
-        <h3>N&eacute;gliger la s&eacute;curit&eacute;</h3>
-        <p>Les acc&egrave;s API Chorus Pro doivent &ecirc;tre s&eacute;curis&eacute;s. Utilisez des certificats et ne stockez jamais les identifiants en clair.</p>
+        <h3>Negliger la securite</h3>
+        <p>Les acces API Chorus Pro doivent etre securises. Utilisez des certificats et ne stockez jamais les identifiants en clair.</p>
 
-        <h2>Par o&ugrave; commencer ?</h2>
-        <p>Si vous facturez r&eacute;guli&egrave;rement le secteur public et que vous perdez du temps sur Chorus Pro :</p>
+        <h2>Par ou commencer ?</h2>
+        <p>Si vous facturez regulierement le secteur public et que vous perdez du temps sur Chorus Pro :</p>
         <ol>
             <li>Listez vos volumes : combien de factures/mois ?</li>
             <li>Identifiez votre ERP/logiciel de facturation actuel</li>
-            <li>V&eacute;rifiez s'il a une int&eacute;gration native</li>
-            <li>Si non, &eacute;valuez le co&ucirc;t d'un connecteur sur mesure</li>
+            <li>Verifiez s'il a une integration native</li>
+            <li>Si non, evaluez le cout d'un connecteur sur mesure</li>
         </ol>
 
         <div class="cta-box">
@@ -304,8 +559,30 @@
     </article>
 
     <footer>
-        <p>&copy; 2026 Pixel Drop. <a href="/blog/">Retour au blog</a> | <a href="/">Accueil</a></p>
+        <p>&copy; 2026 Pixel Drop. <a href="./">Retour au blog</a> | <a href="../index.html">Accueil</a></p>
     </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        const navBtn = document.getElementById('navBtn');
+        const navPopup = document.getElementById('navPopup');
+        navBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navPopup.classList.toggle('active');
+        });
+        document.addEventListener('click', (e) => {
+            if (!navPopup.contains(e.target) && e.target !== navBtn) {
+                navPopup.classList.remove('active');
+            }
+        });
+    </script>
 
 </body>
 </html>
