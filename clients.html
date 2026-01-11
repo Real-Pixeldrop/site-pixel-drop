@@ -303,10 +303,52 @@
             color: var(--gray-400);
         }
 
+        /* See More Button */
+        .see-more-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .btn-see-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: transparent;
+            color: var(--dark);
+            padding: 16px 32px;
+            border-radius: 100px;
+            border: 2px solid var(--gray-200);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .btn-see-more:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .btn-see-more svg {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-see-more.active svg {
+            transform: rotate(180deg);
+        }
+
         /* Clients List Table */
         .clients-list-section {
             padding: 80px 60px;
             background: var(--gray-100);
+            display: none;
+        }
+
+        .clients-list-section.show {
+            display: block;
         }
 
         .clients-list-header {
@@ -1025,11 +1067,54 @@
                 <div class="client-work">Qualification leads automatisée</div>
             </div>
 
+            <!-- DerniereDispo.com - SMS -->
+            <div class="client-card">
+                <div class="client-image">
+                    <div class="client-placeholder placeholder-sms">
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h.01"/><path d="M12 10h.01"/><path d="M16 10h.01"/></svg>
+                    </div>
+                </div>
+                <div class="client-roi">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                    -90% no-shows
+                </div>
+                <div class="client-name-row">
+                    <div class="client-name">dernieredispo.com</div>
+                </div>
+                <div class="client-sector">Réservation restauration</div>
+                <div class="client-work">Rappels SMS + gestion annulations</div>
+            </div>
+
+            <!-- TransEurope - Compare -->
+            <div class="client-card">
+                <div class="client-image">
+                    <div class="client-placeholder placeholder-compare">
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                    </div>
+                </div>
+                <div class="client-roi">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                    2h → 5min par devis
+                </div>
+                <div class="client-name-row">
+                    <div class="client-name">TransEurope</div>
+                </div>
+                <div class="client-sector">Transport & Logistique</div>
+                <div class="client-work">Comparateur de devis automatisé</div>
+            </div>
+
+        </div>
+
+        <div class="see-more-container">
+            <button class="btn-see-more" id="seeMoreBtn">
+                Autres références
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
         </div>
     </section>
 
     <!-- Clients List Section -->
-    <section class="clients-list-section">
+    <section class="clients-list-section" id="clientsList">
         <div class="clients-list-header">
             <h2>Autres références</h2>
             <p>D'autres entreprises qui nous ont fait confiance</p>
@@ -1045,26 +1130,124 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><span class="table-client-name">dernieredispo.com</span></td>
-                    <td><span class="table-sector">Réservation restauration</span></td>
-                    <td><span class="table-work">Rappels SMS + gestion annulations</span></td>
-                    <td>
-                        <span class="table-roi">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
-                            -90% no-shows
-                        </span>
-                    </td>
+                    <td><span class="table-client-name">LXB Construction</span></td>
+                    <td><span class="table-sector">Construction Luxembourg</span></td>
+                    <td><span class="table-work">Site vitrine</span></td>
+                    <td><span class="table-sector">—</span></td>
                 </tr>
                 <tr>
-                    <td><span class="table-client-name">TransEurope</span></td>
-                    <td><span class="table-sector">Transport & Logistique</span></td>
-                    <td><span class="table-work">Comparateur de devis automatisé</span></td>
-                    <td>
-                        <span class="table-roi">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
-                            2h → 5min/devis
-                        </span>
-                    </td>
+                    <td><span class="table-client-name">Away Expedition Dubai</span></td>
+                    <td><span class="table-sector">Tourisme Dubai</span></td>
+                    <td><span class="table-work">Site réservation</span></td>
+                    <td><span class="table-sector">—</span></td>
+                </tr>
+                <tr>
+                    <td><span class="table-client-name">Zellteck</span></td>
+                    <td><span class="table-sector">Nettoyage écologique</span></td>
+                    <td><span class="table-work">Site vitrine</span></td>
+                    <td><span class="table-sector">—</span></td>
+                </tr>
+                <tr>
+                    <td><span class="table-client-name">Emmanuel Bernard</span></td>
+                    <td><span class="table-sector">Directeur Photo</span></td>
+                    <td><span class="table-work">Portfolio</span></td>
+                    <td><span class="table-sector">—</span></td>
+                </tr>
+                <tr>
+                    <td><span class="table-client-name">Licorne Invest</span></td>
+                    <td><span class="table-sector">Investissement</span></td>
+                    <td><span class="table-work">Plateforme Club Deals</span></td>
+                    <td><span class="table-sector">—</span></td>
+                </tr>
+                <tr>
+                    <td><span class="table-client-name">Cothidance</span></td>
+                    <td><span class="table-sector">École de danse Paris</span></td>
+                    <td><span class="table-work">Site vitrine</span></td>
+                    <td><span class="table-sector">—</span></td>
+                </tr>
+                <tr>
+                    <td><span class="table-client-name">Taimpel</span></td>
+                    <td><span class="table-sector">Transition digitale</span></td>
+                    <td><span class="table-work">Site vitrine</span></td>
+                    <td><span class="table-sector">—</span></td>
+                </tr>
+                <tr>
+                    <td><span class="table-client-name">MAKE Kinésithérapie</span></td>
+                    <td><span class="table-sector">Santé Bâle</span></td>
+                    <td><span class="table-work">Site vitrine</span></td>
+                    <td><span class="table-sector">—</span></td>
+                </tr>
+                <tr>
+                    <td><span class="table-client-name">RCL Magazine</span></td>
+                    <td><span class="table-sector">Collectivités territoriales</span></td>
+                    <td><span class="table-work">Plateforme magazine</span></td>
+                    <td><span class="table-sector">—</span></td>
+                </tr>
+                <tr>
+                    <td><span class="table-client-name">Musée Richard Wagner</span></td>
+                    <td><span class="table-sector">Culture</span></td>
+                    <td><span class="table-work">Encyclopédie digitale</span></td>
+                    <td><span class="table-sector">—</span></td>
+                </tr>
+                <tr>
+                    <td><span class="table-client-name">Hollymeals</span></td>
+                    <td><span class="table-sector">Livraison courses</span></td>
+                    <td><span class="table-work">Application commande</span></td>
+                    <td><span class="table-sector">—</span></td>
+                </tr>
+                <tr>
+                    <td><span class="table-client-name">Plaza Tango</span></td>
+                    <td><span class="table-sector">Festival Tango</span></td>
+                    <td><span class="table-work">Site événement</span></td>
+                    <td><span class="table-sector">—</span></td>
+                </tr>
+                <tr>
+                    <td><span class="table-client-name">Warere Hotel</span></td>
+                    <td><span class="table-sector">Hôtellerie Zanzibar</span></td>
+                    <td><span class="table-work">Site réservation</span></td>
+                    <td><span class="table-sector">—</span></td>
+                </tr>
+                <tr>
+                    <td><span class="table-client-name">Club3C Paris</span></td>
+                    <td><span class="table-sector">Club privé</span></td>
+                    <td><span class="table-work">Site membres</span></td>
+                    <td><span class="table-sector">—</span></td>
+                </tr>
+                <tr>
+                    <td><span class="table-client-name">JAB Production</span></td>
+                    <td><span class="table-sector">Cinéma</span></td>
+                    <td><span class="table-work">Site vitrine</span></td>
+                    <td><span class="table-sector">—</span></td>
+                </tr>
+                <tr>
+                    <td><span class="table-client-name">Tkhor Avocats</span></td>
+                    <td><span class="table-sector">Cabinet d'avocats</span></td>
+                    <td><span class="table-work">Site vitrine</span></td>
+                    <td><span class="table-sector">—</span></td>
+                </tr>
+                <tr>
+                    <td><span class="table-client-name">AI Consulting NH</span></td>
+                    <td><span class="table-sector">Consulting IA</span></td>
+                    <td><span class="table-work">Site vitrine</span></td>
+                    <td><span class="table-sector">—</span></td>
+                </tr>
+                <tr>
+                    <td><span class="table-client-name">Eagle Rocket</span></td>
+                    <td><span class="table-sector">Recrutement Rennes</span></td>
+                    <td><span class="table-work">Site vitrine</span></td>
+                    <td><span class="table-sector">—</span></td>
+                </tr>
+                <tr>
+                    <td><span class="table-client-name">Kellua SPA</span></td>
+                    <td><span class="table-sector">Centre flottaison Bordeaux</span></td>
+                    <td><span class="table-work">Site réservation</span></td>
+                    <td><span class="table-sector">—</span></td>
+                </tr>
+                <tr>
+                    <td><span class="table-client-name">SACO</span></td>
+                    <td><span class="table-sector">Industrie</span></td>
+                    <td><span class="table-work">Site vitrine</span></td>
+                    <td><span class="table-sector">—</span></td>
                 </tr>
             </tbody>
         </table>
@@ -1139,6 +1322,19 @@
                 mobileMenu.classList.remove('active');
                 document.body.style.overflow = '';
             });
+        });
+
+        // See more clients toggle
+        const seeMoreBtn = document.getElementById('seeMoreBtn');
+        const clientsList = document.getElementById('clientsList');
+
+        seeMoreBtn.addEventListener('click', () => {
+            seeMoreBtn.classList.toggle('active');
+            clientsList.classList.toggle('show');
+
+            if (clientsList.classList.contains('show')) {
+                clientsList.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         });
     </script>
 
