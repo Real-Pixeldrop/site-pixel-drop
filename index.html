@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pixel Drop — Automatisation & IA pour PME</title>
+    <title>Pixel Drop — Automatisation & IA pour votre entreprise</title>
     <meta name="description" content="Pixel Drop connecte vos outils métier (Sage, Chorus Pro, CRM, ERP) et automatise vos tâches répétitives. Gagnez 10h+ par semaine. Devis gratuit.">
     <meta name="keywords" content="automatisation, IA, PME, intégration, Sage, Chorus Pro, n8n, workflow, productivité">
     <meta name="author" content="Pixel Drop">
@@ -12,14 +12,14 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://pixel-drop.com/">
-    <meta property="og:title" content="Pixel Drop — Automatisation & IA pour PME">
+    <meta property="og:title" content="Pixel Drop — Automatisation & IA pour votre entreprise">
     <meta property="og:description" content="On connecte vos outils métier et on automatise vos tâches répétitives. Gagnez 10h+ par semaine.">
     <meta property="og:image" content="https://pixel-drop.com/og-image.png">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://pixel-drop.com/">
-    <meta name="twitter:title" content="Pixel Drop — Automatisation & IA pour PME">
+    <meta name="twitter:title" content="Pixel Drop — Automatisation & IA pour votre entreprise">
     <meta name="twitter:description" content="On connecte vos outils métier et on automatise vos tâches répétitives. Gagnez 10h+ par semaine.">
     <meta name="twitter:image" content="https://pixel-drop.com/og-image.png">
 
@@ -434,8 +434,17 @@
 
         .problem-image {
             margin-top: 40px;
-            max-width: 100%;
-            border-radius: 16px;
+            width: 100%;
+            height: 200px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .problem-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
         }
 
         .problem-list {
@@ -516,7 +525,7 @@
         }
 
         .section-header {
-            max-width: 700px;
+            max-width: 900px;
             margin-bottom: 80px;
             text-align: center;
             margin-left: auto;
@@ -883,6 +892,134 @@
         @media (max-width: 600px) {
             .results-grid {
                 grid-template-columns: 1fr;
+            }
+        }
+
+        /* About Section */
+        .about {
+            padding: 150px 60px 50px;
+            background: var(--gray-100);
+        }
+
+        .about-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--dark);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 60px;
+            padding: 10px 20px;
+            border: 1px solid var(--gray-200);
+            border-radius: 100px;
+        }
+
+        .about-tag::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .about-image {
+            border-radius: 16px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            background: var(--gray-100);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-content h2 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 50px;
+            color: var(--dark);
+        }
+
+        .about-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .about-column p {
+            font-size: 1.05rem;
+            color: var(--gray-600);
+            line-height: 1.8;
+        }
+
+        .about-column p em {
+            font-style: italic;
+            color: var(--dark);
+        }
+
+        .about-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--dark);
+            color: var(--white);
+            padding: 18px 36px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .about-link:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(28, 187, 200, 0.3);
+        }
+
+        .about-link svg {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .about-link:hover svg {
+            transform: translateX(5px);
+        }
+
+        @media (max-width: 1024px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .about-image {
+                max-width: 600px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about {
+                padding: 100px 30px;
+            }
+
+            .about-columns {
+                grid-template-columns: 1fr;
+                gap: 25px;
             }
         }
 
@@ -1550,10 +1687,10 @@
         <div class="hero-content">
             <div class="hero-tag">
                 <span class="hero-tag-dot"></span>
-                Automatisation & IA pour PME
+                Automatisation & IA pour votre entreprise
             </div>
-            <h1>On connecte vos outils.<br><span>Ils font le reste.</span></h1>
-            <p class="hero-subtitle">Nous automatisons vos tâches répétitives pour que vous puissiez vous concentrer sur ce qui compte vraiment : développer votre business.</p>
+            <h1>Gagnez du temps grâce à <span>l'automatisation.</span></h1>
+            <p class="hero-subtitle">On automatise vos tâches, vos outils deviennent autonomes et intelligents. Gagnez 10 à 20 heures par semaine. Zéro erreur de saisie.</p>
             <div class="hero-ctas">
                 <div class="contact-popup-wrapper">
                     <div class="contact-popup" id="heroPopup">
@@ -1569,10 +1706,10 @@
                             </a>
                         </div>
                     </div>
-                    <button class="btn-primary btn-popup" data-popup="heroPopup">
-                        Réserver un appel
+                    <a href="simulateur/" class="btn-primary" style="background: linear-gradient(135deg, var(--dark) 0%, #1a3a3d 100%); border: 1px solid var(--accent);">
+                        Calculez vos économies
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                    </button>
+                    </a>
                 </div>
                 <a href="#services" class="btn-secondary">Découvrir nos services</a>
             </div>
@@ -1619,6 +1756,9 @@
         <div class="problem-grid">
             <div>
                 <h2>Vous perdez du temps sur des tâches que les <span>machines</span> pourraient faire.</h2>
+                <div class="problem-image">
+                    <img src="problem-image.jpg" alt="Travail sur ordinateur">
+                </div>
             </div>
             <div class="problem-list">
                 <div class="problem-item">
@@ -1784,6 +1924,28 @@
                     <svg viewBox="0 0 24 24" fill="#D4A84B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                     <svg viewBox="0 0 24 24" fill="#D4A84B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                     <svg viewBox="0 0 24 24" fill="#D4A84B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-grid">
+            <div class="about-image">
+                <img src="zap.png" alt="Automatisation avec Zapier et IA">
+            </div>
+
+            <div class="about-content">
+                <h2>On automatise ce qui vous ralentit, pour que vous puissiez <span style="color: var(--accent)">accélérer.</span></h2>
+
+                <div class="about-columns">
+                    <div class="about-column">
+                        <p>Pixel Drop accompagne les entreprises dans leur transformation digitale. Saisie de données, relances clients, synchronisation entre logiciels : nous automatisons les tâches répétitives pour que vos équipes se concentrent sur <em>ce qui compte vraiment.</em></p>
+                    </div>
+                    <div class="about-column">
+                        <p>Notre approche : comprendre votre métier, identifier les goulots d'étranglement, et construire des automatisations sur mesure avec des outils comme <em>n8n, Make, et l'IA</em>. Pas de solutions génériques. Du concret, du mesurable, du retour sur investissement.</p>
+                    </div>
                 </div>
             </div>
         </div>
