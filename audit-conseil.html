@@ -145,6 +145,7 @@ a.pd-link{cursor:pointer}
 document.addEventListener('DOMContentLoaded', function () {
   var toggle = document.getElementById('navbar-menu');
   var menu = document.querySelector('.c-nav-menu');
+  if (!toggle || !menu) return;
   var isOpen = false;
 
   toggle.addEventListener('click', function (e) {
