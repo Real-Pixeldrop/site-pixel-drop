@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Pixel Agent : feuille de route | Pixel Drop</title>
+  <meta name="description" content="Feuille de route du produit Pixel Agent : ce qui est livré, en cours et prévu.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="brand/pixeldrop.svg" type="image/svg+xml">
+  <style>
+    @font-face {
+      font-family: 'Ppmori';
+      src: url('67626d3c1e0bdbbc8a78acc8/67629ee7fd3051bc9e21ec01_PPMori-Regular.otf') format('opentype');
+      font-weight: 400; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Gotham';
+      src: url('67626d3c1e0bdbbc8a78acc8/67629f285db1381e01f45097_Gotham-Book.ttf') format('truetype');
+      font-weight: 400; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Gotham';
+      src: url('67626d3c1e0bdbbc8a78acc8/67629ff98f83cb2cd9333839_Gotham-Medium.ttf') format('truetype');
+      font-weight: 500; font-display: swap;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #182a38;
+      color: #fff;
+      font-family: 'Gotham', system-ui, sans-serif;
+      min-height: 100vh;
+    }
+    .pd-dot {
+      display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+      background: #FF0101; box-shadow: 0 0 7px rgba(255, 1, 1, .55);
+      margin-left: 6px; vertical-align: super;
+    }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+    header.rm {
+      padding: 40px 0 8px;
+      display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+    }
+    header.rm img { width: 34px; height: 34px; border-radius: 8px; }
+    header.rm .t { font-family: 'Ppmori', sans-serif; font-size: 22px; letter-spacing: 0; }
+    header.rm .t small { color: #9cb4c9; font-size: 13px; display: block; margin-top: 2px; font-family: 'Gotham', sans-serif; }
+    header.rm .v {
+      margin-left: auto; font-size: 12px; color: #9cb4c9;
+      border: 1px solid #294256; padding: 4px 12px; border-radius: 999px;
+    }
+    .intro { color: #9cb4c9; font-size: 14.5px; line-height: 1.6; margin: 18px 0 34px; max-width: 640px; }
+    .board { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; padding-bottom: 40px; }
+    @media (max-width: 900px) { .board { grid-template-columns: 1fr; } }
+    .col-head {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 500; letter-spacing: .04em; text-transform: uppercase;
+      color: #9cb4c9; margin-bottom: 14px;
+    }
+    .col-head .n {
+      font-size: 11px; color: #6fa8b8; border: 1px solid #294256;
+      border-radius: 999px; padding: 1px 8px;
+    }
+    .dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+    .dot.plan { background: #6795a3; }
+    .dot.wip  { background: #e8b04b; box-shadow: 0 0 6px rgba(232, 176, 75, .45); }
+    .dot.done { background: #5FD6C9; box-shadow: 0 0 6px rgba(95, 214, 201, .4); }
+    .card {
+      background: #20323f; border: 1px solid #294256; border-radius: 12px;
+      padding: 15px 16px; margin-bottom: 10px;
+    }
+    .card h3 { font-family: 'Gotham', sans-serif; font-weight: 500; font-size: 14px; letter-spacing: 0; margin-bottom: 5px; }
+    .card p { font-size: 12.5px; color: #9cb4c9; line-height: 1.55; }
+    .card .tag {
+      display: inline-block; margin-top: 9px; font-size: 10.5px; color: #6fa8b8;
+      border: 1px solid #294256; border-radius: 5px; padding: 2px 7px;
+    }
+    .cta {
+      border-top: 1px solid #294256; padding: 26px 0 44px;
+      color: #9cb4c9; font-size: 13.5px;
+    }
+    .cta a { color: #6fa8b8; text-decoration: none; border-bottom: 1px solid #294256; }
+    .cta a:hover { color: #fff; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="rm">
+      <img src="brand/pixeldrop.svg" alt="Pixel Drop">
+      <div class="t">Pixel Agent<span class="pd-dot"></span>
+        <small>Feuille de route du produit</small>
+      </div>
+      <div class="v">v0.1.0</div>
+    </header>
+
+    <p class="intro">
+      Pixel Agent est la plateforme d'agents IA installée chez nos clients : vos agents,
+      vos données, sur votre serveur. Voici ce qui est livré, ce qui est en cours et ce
+      qui arrive. Une idée, un besoin ? Écrivez-nous, la feuille de route se construit
+      avec les utilisateurs.
+    </p>
+
+    <div class="board">
+      <div>
+        <div class="col-head"><span class="dot plan"></span> Prévu <span class="n">7</span></div>
+        <div class="card"><h3>Analytique d'usage</h3><p>Volume par modèle et par utilisateur, coûts, limites de dépense par personne.</p><span class="tag">Pilotage</span></div>
+        <div class="card"><h3>Connecteurs métier à actions</h3><p>Envoi d'emails, écriture CRM et autres actions sortantes, toujours avec validation humaine.</p><span class="tag">Automatisation</span></div>
+        <div class="card"><h3>Historique des extractions</h3><p>Retrouver, rejouer et exporter toutes les extractions passées, côté serveur.</p><span class="tag">Extraction</span></div>
+        <div class="card"><h3>Automatisations visuelles</h3><p>Brancher des blocs entre eux : un dossier de factures, une extraction, un export.</p><span class="tag">Automatisation</span></div>
+        <div class="card"><h3>Clés API et accès</h3><p>Gérer les clés des fournisseurs de modèles et les accès techniques du déploiement.</p><span class="tag">Administration</span></div>
+        <div class="card"><h3>Export et import d'agents</h3><p>Transporter des agents configurés d'un serveur à un autre en un fichier.</p><span class="tag">Déploiement</span></div>
+        <div class="card"><h3>Rôles prédéfinis</h3><p>Administrateur, utilisateur, créateur : des profils prêts à l'emploi et des rôles sur mesure.</p><span class="tag">Permissions</span></div>
+      </div>
+      <div>
+        <div class="col-head"><span class="dot wip"></span> En cours <span class="n">3</span></div>
+        <div class="card"><h3>Thème sombre complet</h3><p>Le mode sombre au langage visuel Pixel Drop, au même niveau de finition que le clair.</p><span class="tag">Interface</span></div>
+        <div class="card"><h3>Gestion des modèles locaux</h3><p>Télécharger, supprimer et définir le modèle par défaut directement depuis la page Modèles.</p><span class="tag">Modèles</span></div>
+        <div class="card"><h3>Packs de skills métier</h3><p>Des compétences prêtes à l'emploi installées au déploiement, selon votre métier.</p><span class="tag">Skills</span></div>
+      </div>
+      <div>
+        <div class="col-head"><span class="dot done"></span> Livré <span class="n">12</span></div>
+        <div class="card"><h3>Tableau de bord</h3><p>Aperçu de l'organisation : activité, licence, maintenance, agents, dernières conversations.</p><span class="tag">Pilotage</span></div>
+        <div class="card"><h3>Vue client</h3><p>L'administrateur bascule d'un raccourci pour voir l'interface exactement comme ses utilisateurs.</p><span class="tag">Administration</span></div>
+        <div class="card"><h3>Palette de commandes</h3><p>Toutes les pages et conversations au clavier, en un raccourci.</p><span class="tag">Interface</span></div>
+        <div class="card"><h3>Agents avec documents (RAG)</h3><p>Création guidée d'agents qui répondent à partir de vos documents internes.</p><span class="tag">Agents</span></div>
+        <div class="card"><h3>Extraction de documents</h3><p>Des documents en entrée, un tableau structuré exportable en sortie, en local.</p><span class="tag">Extraction</span></div>
+        <div class="card"><h3>Orchestrateur</h3><p>Une seule entrée qui route chaque demande vers le bon agent, en expliquant son choix.</p><span class="tag">Agents</span></div>
+        <div class="card"><h3>Permissions par agent</h3><p>Qui accède à quel agent, utilisateur par utilisateur, sur une grille lisible.</p><span class="tag">Permissions</span></div>
+        <div class="card"><h3>Charte d'entreprise</h3><p>Une consigne globale appliquée à tous les agents, quel que soit le modèle.</p><span class="tag">Gouvernance</span></div>
+        <div class="card"><h3>Journal d'audit</h3><p>Toutes les actions d'administration tracées : qui a fait quoi, quand.</p><span class="tag">Gouvernance</span></div>
+        <div class="card"><h3>Modèles locaux et externes</h3><p>Chaque agent choisit son moteur : local sur votre serveur, ou Claude si vous l'autorisez.</p><span class="tag">Modèles</span></div>
+        <div class="card"><h3>Licence et plafond d'utilisateurs</h3><p>Suivi de validité et compteur d'utilisateurs actifs intégrés au produit.</p><span class="tag">Administration</span></div>
+        <div class="card"><h3>Profil simplifié</h3><p>Photo, nom, email et mot de passe dans une fenêtre simple, sans réglages inutiles.</p><span class="tag">Interface</span></div>
+      </div>
+    </div>
+
+    <div class="cta">
+      Une idée à proposer pour Pixel Agent ? Écrivez-nous :
+      <a href="mailto:contact@pixel-drop.com">contact@pixel-drop.com</a>
+    </div>
+  </div>
+</body>
+</html>
