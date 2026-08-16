@@ -1,0 +1,1 @@
+Dépose tes logos clients/partenaires ici (PNG fond transparent ou SVG). Nom du fichier = nom du client (ex: lxb-construction.png). Le nom sert juste d'alt.

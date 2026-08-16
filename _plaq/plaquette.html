@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Plaquette Pixel Drop Technologies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --noir:#06090B;--encre:#0B1011;--surf:#0E1618;--teal:#17292C;--glow:#22605E;
+    --turq:#5FD6C9;--rouge:#E6000D;--blanc:#fff;--brume:#C2D7D8;--brume2:#94A6A4;
+    --line:rgba(255,255,255,.10);--line2:rgba(255,255,255,.16);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{font-family:'Manrope',-apple-system,BlinkMacSystemFont,Arial,sans-serif;color:#fff;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  @page{size:210mm 297mm;margin:0}
+  .page{width:210mm;height:297mm;background:var(--noir);position:relative;overflow:hidden;page-break-after:always}
+  .page:last-child{page-break-after:auto}
+  .logo{height:9.5mm}
+  .eyebrow{font-size:9pt;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--turq)}
+  .clogos img{filter:brightness(0) invert(1)}
+  .sq{width:9px;height:9px;background:var(--rouge);display:inline-block;border-radius:1px}
+
+  .phead{position:relative;z-index:3;display:flex;align-items:center;justify-content:space-between;padding:16mm 18mm 0}
+  .phead .num{font-size:8.5pt;letter-spacing:.2em;text-transform:uppercase;color:var(--turq);font-weight:700}
+
+  /* ===================== P1 COVER ===================== */
+  .cover .bg{position:absolute;inset:0;background:url('assets/hero-bg.png') center/cover no-repeat;opacity:1}
+  .cover .glow{position:absolute;left:-15mm;top:24mm;width:150mm;height:150mm;border-radius:50%;
+    background:radial-gradient(circle,rgba(34,96,94,.6),transparent 66%);filter:blur(3mm)}
+  .cover .veil{position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(6,9,11,.42) 0%,rgba(6,9,11,.10) 30%,rgba(6,9,11,.52) 60%,rgba(6,9,11,.92) 82%,rgba(6,9,11,.99) 100%)}
+  .cover .inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:16mm 18mm 0}
+  .cover .top{display:flex;align-items:center;justify-content:space-between}
+  .cover .top .tag{font-size:8pt;letter-spacing:.22em;text-transform:uppercase;color:var(--brume2);font-weight:600}
+  .navpills{display:flex;gap:6px;margin-top:8mm}
+  .navpills span{border:1px solid var(--line2);border-radius:40px;padding:5px 13px;font-size:8.5pt;font-weight:600;color:#dfeae8;background:rgba(6,9,11,.35)}
+  .cover .mid{margin-top:auto}
+  .cover h1{font-size:39pt;line-height:1.04;font-weight:800;letter-spacing:-.025em;margin-top:8mm}
+  .cover h1 .a{color:var(--turq)}
+  .cover .lead{font-size:11.5pt;line-height:1.6;color:var(--brume);margin-top:8mm;max-width:150mm;font-weight:400}
+  .cover .site{margin-top:8mm;display:flex;align-items:center;gap:9px;font-size:10.5pt;color:#eef3f1;font-weight:700}
+  .partners{margin:13mm -18mm 0;background:var(--encre);border-top:1px solid var(--line);padding:6.5mm 18mm;
+    display:flex;align-items:center;gap:8mm}
+  .partners .lbl{font-size:7pt;letter-spacing:.18em;text-transform:uppercase;color:var(--brume2);font-weight:700;flex:none;white-space:nowrap}
+  .partners .row{display:flex;align-items:center;gap:7mm;flex-wrap:nowrap;flex:1;justify-content:space-between}
+  .partners img{max-height:4.6mm;max-width:27mm;width:auto;height:auto;opacity:.7}
+  .partners img.sm{max-height:3.9mm}
+
+  /* ===================== DOMAIN FULL PAGE ===================== */
+  .dom .body{padding:10mm 18mm 0;position:relative;z-index:2;height:calc(297mm - 16mm - 9.5mm);display:flex;flex-direction:column}
+  .glowfx{position:absolute;width:120mm;height:120mm;border-radius:50%;background:radial-gradient(circle,rgba(34,96,94,.34),transparent 68%);filter:blur(5mm);z-index:1}
+  .dglow-r{right:-40mm;top:8mm}.dglow-l{left:-45mm;bottom:30mm}
+  .dom h1{font-size:29pt;line-height:1.08;font-weight:800;letter-spacing:-.022em;margin-top:4mm;max-width:160mm}
+  .dom h1 .a{color:var(--turq)}
+  .soon{display:inline-block;font-size:8pt;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--noir);background:var(--turq);border-radius:30px;padding:4px 11px;margin-left:9px;vertical-align:middle}
+  .dom .intro{font-size:11.5pt;line-height:1.6;color:var(--brume);margin-top:6mm;max-width:165mm;font-weight:400}
+  .dom .hero-img{margin-top:9mm;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--surf);aspect-ratio:16/8.4}
+  .dom .hero-img img{width:100%;height:100%;object-fit:cover;display:block}
+  .pts{margin-top:auto;padding:9mm 0 12mm;display:grid;grid-template-columns:1fr 1fr 1fr;gap:9mm}
+  .pt .pn{font-size:9pt;font-weight:800;color:var(--turq);letter-spacing:.05em}
+  .pt b{display:block;font-size:11.5pt;font-weight:700;margin-top:4mm;color:#fff;line-height:1.2}
+  .pt p{font-size:9pt;line-height:1.5;color:var(--brume2);margin-top:3mm}
+  .pt+.pt{padding-left:9mm;border-left:1px solid var(--line)}
+
+  /* page 2 : fond teal créatif + 4 points */
+  .dom2 .bgwrap{position:absolute;top:0;left:0;right:0;height:140mm;overflow:hidden;z-index:0}
+  .dom2 .bgwrap img{width:100%;height:100%;object-fit:cover}
+  .dom2 .bgveil{position:absolute;top:0;left:0;right:0;height:140mm;z-index:1;
+    background:linear-gradient(180deg,rgba(6,9,11,.30) 0%,rgba(6,9,11,.18) 26%,rgba(6,9,11,.78) 74%,var(--noir) 100%)}
+  .dom2 .hero-img{aspect-ratio:16/7.4}
+  .pts4{margin-top:auto;padding:8mm 0 12mm;display:grid;grid-template-columns:repeat(4,1fr);gap:7mm}
+  .pts4 .pt+.pt{padding-left:7mm}
+  .pts4 .pt b{font-size:10.5pt}
+  .pts4 .pt p{font-size:8.3pt}
+
+  /* strips de logos tech (mono blanc) */
+  .techrow{display:flex;align-items:center;gap:7mm;margin-top:6mm}
+  .techrow .tl{font-size:7pt;letter-spacing:.16em;text-transform:uppercase;color:var(--brume2);font-weight:700;flex:none;white-space:nowrap}
+  .techrow .ti{display:flex;align-items:center;gap:6mm}
+  .techrow img{height:5mm;width:auto;opacity:.62}
+
+  /* ===================== SPLIT PAGE - 2 colonnes verticales ===================== */
+  .split .sbody{position:relative;z-index:2;padding:9mm 18mm 12mm;height:calc(297mm - 16mm - 9.5mm);
+    display:grid;grid-template-columns:1fr 1fr;gap:13mm}
+  .vline{position:absolute;left:50%;top:14mm;bottom:14mm;width:1px;background:var(--line);z-index:2}
+  .col{display:flex;flex-direction:column;justify-content:space-between;height:100%;min-height:0}
+  .col .head .tag{display:inline-block;font-size:8pt;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:var(--turq);
+    background:rgba(95,214,201,.1);border:1px solid rgba(95,214,201,.25);border-radius:40px;padding:5px 12px}
+  .col .head h3{font-size:17pt;line-height:1.14;font-weight:800;letter-spacing:-.012em;margin-top:5mm;color:#fff}
+  .col .head h3 .a{color:var(--turq)}
+  .col .head .hsoon{display:inline-block;font-size:7pt;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--noir);
+    background:var(--turq);border-radius:30px;padding:3px 8px;margin-left:6px;vertical-align:middle}
+  .col .head .ci{font-size:9.5pt;line-height:1.55;color:var(--brume);margin-top:4mm;font-weight:400}
+  .col .colimg{border:1px solid var(--line);border-radius:11px;overflow:hidden;background:var(--surf);aspect-ratio:16/9.5}
+  .col .colimg img{width:100%;height:100%;object-fit:cover;display:block}
+  .cards{display:flex;flex-direction:column;gap:3.4mm}
+  .card{border:1px solid var(--line);border-radius:9px;background:rgba(255,255,255,.022);padding:3.6mm 4.6mm;display:flex;gap:10px;align-items:flex-start}
+  .card.hl{background:rgba(95,214,201,.1);border-color:rgba(95,214,201,.38)}
+  .card .ic{width:18px;height:18px;border-radius:50%;background:rgba(95,214,201,.14);border:1px solid rgba(95,214,201,.5);
+    flex:none;display:flex;align-items:center;justify-content:center;margin-top:1px}
+  .card .ic svg{width:10px;height:10px}
+  .card b{font-size:10pt;font-weight:700;color:#fff;display:block;line-height:1.2}
+  .card p{font-size:8.4pt;line-height:1.42;color:var(--brume2);margin-top:2px}
+  .col .colimg{aspect-ratio:16/8}
+  /* colonne Infrastructure : accent bleuté (sous-section dédiée, comme sur le site) */
+  .col.blue .head .tag{color:#62A8E8;background:rgba(98,168,232,.1);border-color:rgba(98,168,232,.3)}
+  .col.blue .head h3 .a{color:#62A8E8}
+  .col.blue .card.hl{background:rgba(98,168,232,.1);border-color:rgba(98,168,232,.4)}
+  .col.blue .card .ic{background:rgba(98,168,232,.14);border-color:rgba(98,168,232,.55)}
+
+  /* ===================== CONTACT ===================== */
+  .p4 .glowfx2{position:absolute;right:-30mm;bottom:-20mm;width:130mm;height:130mm;border-radius:50%;
+    background:radial-gradient(circle,rgba(34,96,94,.45),transparent 70%);filter:blur(5mm);z-index:1}
+  .p4 .body{position:relative;z-index:2;padding:13mm 18mm 0}
+  .p4 h2{font-size:30pt;font-weight:800;letter-spacing:-.02em;line-height:1.06;color:#fff}
+  .p4 h2 .a{color:var(--turq)}
+  .p4 .sub{font-size:11pt;line-height:1.6;color:var(--brume);margin-top:5mm;max-width:140mm;font-weight:400}
+  .cwrap{margin-top:12mm;display:grid;grid-template-columns:1.3fr 1fr;gap:13mm;align-items:start}
+  .contact{display:flex;flex-direction:column;gap:8mm}
+  .crow{display:flex;flex-direction:column;gap:3px}
+  .crow .lab{color:var(--turq);font-weight:700;font-size:8pt;letter-spacing:.16em;text-transform:uppercase}
+  .crow .val{color:#eef3f1;font-weight:600;font-size:11.5pt}
+  .qrbox{background:#fff;border-radius:12px;padding:6mm;text-align:center}
+  .qrbox img{width:36mm;height:36mm;display:block;margin:0 auto}
+  .qrbox p{font-size:8.5pt;color:#445;margin-top:4mm;line-height:1.4;font-weight:600}
+  .qrbox p b{color:#0b1011}
+  .vprops{margin-top:14mm;border-top:1px solid var(--line);padding-top:8mm;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8mm}
+  .vp b{display:block;color:#fff;font-weight:700;font-size:10.5pt}
+  .vp span{color:var(--brume2);font-size:8.5pt;line-height:1.4;display:block;margin-top:2px}
+  .pfoot{position:absolute;z-index:2;left:18mm;right:18mm;bottom:14mm;display:flex;align-items:center;justify-content:space-between;
+    border-top:1px solid var(--line);padding-top:6mm}
+  .pfoot .pl{display:flex;align-items:center;gap:7mm}
+  .pfoot img.clg{height:5mm;opacity:.7;filter:brightness(0) invert(1)}
+  .pfoot .meta{font-size:8pt;color:var(--brume2);font-weight:600}
+</style>
+</head>
+<body>
+
+<!-- ===================== PAGE 1 : COUVERTURE ===================== -->
+<div class="page cover">
+  <div class="bg"></div><div class="glow"></div><div class="veil"></div>
+  <div class="inner">
+    <div class="top">
+      <img class="logo" src="assets/logo.svg" alt="Pixel Drop Technologies">
+      <span class="tag">Plaquette 2026</span>
+    </div>
+    <div class="navpills">
+      <span>Audit &amp; Conseil</span><span>Intégration IA</span><span>Infrastructure</span>
+    </div>
+    <div class="mid">
+      <div class="eyebrow">Automatisation · IA · Data · Infrastructure</div>
+      <h1>On connecte vos outils,<br>on automatise vos&nbsp;tâches,<br>on transforme vos <span class="a">données.</span></h1>
+      <p class="lead">On connecte vos outils, on automatise les tâches répétitives et on transforme vos données en décisions éclairées. De l'audit à la mise en production, une exécution maîtrisée de bout en bout.</p>
+      <div class="site"><span class="sq"></span> pixel-drop.com</div>
+    </div>
+    <div class="partners clogos">
+      <div class="lbl">Clients &amp; partenaires</div>
+      <div class="row">
+        <img src="assets/clients/sharp.svg" alt="Sharp">
+        <img src="assets/clients/anthropic.svg" alt="Anthropic">
+        <img src="assets/clients/openai.svg" alt="OpenAI" class="sm">
+        <img src="assets/clients/databricks.svg" alt="Databricks">
+        <img src="assets/clients/n8n.svg" alt="n8n">
+        <img src="assets/clients/zapier.svg" alt="Zapier">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== PAGE 2 : INTÉGRATION IA (pleine page) ===================== -->
+<div class="page dom dom2">
+  <div class="bgwrap"><img src="assets/bg-ia.png" alt=""></div>
+  <div class="bgveil"></div>
+  <div class="phead">
+    <img class="logo" src="assets/logo.svg" alt="Pixel Drop Technologies">
+    <span class="num">Intégration agents IA</span>
+  </div>
+  <div class="body">
+    <div class="eyebrow">Agent Email · Chatbots · Workflows · Aide à la décision</div>
+    <h1>L'IA intégrée à <span class="a">votre quotidien.</span></h1>
+    <p class="intro">On connecte vos outils, on automatise les tâches répétitives et on met l'intelligence artificielle au travail, branchée sur vos données et vos règles. Le cœur de notre métier.</p>
+    <div class="hero-img"><img src="assets/agent-email-fr.png" alt="Agent Email : tri, réponses et suivi automatiques"></div>
+    <div class="pts4">
+      <div class="pt"><div class="pn">/ 01</div><b>Agent Email</b><p>Votre boîte triée et résumée, des réponses prêtes, les urgences escaladées et les VIP suivis.</p></div>
+      <div class="pt"><div class="pn">/ 02</div><b>Assistants &amp; chatbots</b><p>Disponibles en continu, branchés sur vos données et vos règles, réponses encadrées.</p></div>
+      <div class="pt"><div class="pn">/ 03</div><b>Workflows automatisés</b><p>Connexion des outils, relances, synchro et reporting automatique.</p></div>
+      <div class="pt"><div class="pn">/ 04</div><b>Aide à la décision</b><p>Tableaux de bord et données transformées en décisions. Conforme RGPD.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== PAGE 3 : AUDIT (gauche) + INFRASTRUCTURE (droite) ===================== -->
+<div class="page split">
+  <div class="glowfx dglow-r"></div>
+  <div class="phead">
+    <img class="logo" src="assets/logo.svg" alt="Pixel Drop Technologies">
+    <span class="num">Audit &amp; Infrastructure</span>
+  </div>
+  <div class="vline"></div>
+  <div class="sbody">
+
+    <!-- COLONNE GAUCHE : AUDIT & CONSEIL -->
+    <div class="col">
+      <div class="head">
+        <span class="tag">Audit &amp; Conseil</span>
+        <h3>On cartographie votre activité pour cibler <span class="a">les bons leviers.</span></h3>
+        <p class="ci">On reconstitue vos flux et vos données, on repère où le temps se perd et ce qui peut être automatisé, puis on vous remet une feuille de route claire et priorisée.</p>
+      </div>
+      <div class="cards">
+        <div class="card"><span class="ic"><svg viewBox="0 0 12 9" fill="none"><path d="M1 4.5L4.2 7.7L11 1" stroke="#5FD6C9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Cartographie des process</b><p>Qui fait quoi, avec quel outil, et où la donnée se perd ou se ressaisit entre vos applications.</p></div></div>
+        <div class="card"><span class="ic"><svg viewBox="0 0 12 9" fill="none"><path d="M1 4.5L4.2 7.7L11 1" stroke="#5FD6C9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Détection des leviers</b><p>Tâches répétitives, ruptures entre outils et zones à fort potentiel d'automatisation et d'IA.</p></div></div>
+        <div class="card"><span class="ic"><svg viewBox="0 0 12 9" fill="none"><path d="M1 4.5L4.2 7.7L11 1" stroke="#5FD6C9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Démarche non bloquante</b><p>Entretiens courts et observation de vos outils, sans interrompre le travail de vos équipes.</p></div></div>
+        <div class="card hl"><span class="ic"><svg viewBox="0 0 12 9" fill="none"><path d="M1 4.5L4.2 7.7L11 1" stroke="#5FD6C9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Feuille de route chiffrée</b><p>Opportunités priorisées, gains attendus et plan d'action. Le rapport est à vous.</p></div></div>
+      </div>
+      <div class="colimg"><img src="assets/cartographie.png" alt="Cartographie des flux et automatisation"></div>
+      <div class="techrow"><span class="tl">S'intègre à</span><span class="ti">
+        <img src="assets/tech/n8n.svg" alt="n8n"><img src="assets/tech/make.svg" alt="Make"><img src="assets/tech/hubspot.svg" alt="HubSpot"><img src="assets/tech/notion.svg" alt="Notion"></span></div>
+    </div>
+
+    <!-- COLONNE DROITE : INFRASTRUCTURE (accent bleuté) -->
+    <div class="col blue">
+      <div class="head">
+        <span class="tag">Infrastructure</span>
+        <h3>Votre IA sur une <span class="a">infrastructure dédiée.</span></h3>
+        <p class="ci">Au lieu d'un cloud générique aux coûts qui s'envolent, une infrastructure dimensionnée pour votre activité, isolée et administrée de bout en bout.</p>
+      </div>
+      <div class="colimg"><img src="assets/infra-real.png" alt="Infrastructure IA dédiée"></div>
+      <div class="cards">
+        <div class="card"><span class="ic"><svg viewBox="0 0 12 9" fill="none"><path d="M1 4.5L4.2 7.7L11 1" stroke="#62A8E8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Serveurs dédiés</b><p>Une infrastructure isolée, rien que pour vous. Stabilité, performance et confidentialité.</p></div></div>
+        <div class="card"><span class="ic"><svg viewBox="0 0 12 9" fill="none"><path d="M1 4.5L4.2 7.7L11 1" stroke="#62A8E8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Puissance de calcul</b><p>GPU et CPU dimensionnés pour vos modèles et vos traitements de données les plus lourds.</p></div></div>
+        <div class="card"><span class="ic"><svg viewBox="0 0 12 9" fill="none"><path d="M1 4.5L4.2 7.7L11 1" stroke="#62A8E8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Coûts maîtrisés</b><p>Vous payez la puissance utile, sans surdimensionner ni subir les coûts d'un cloud générique.</p></div></div>
+        <div class="card hl"><span class="ic"><svg viewBox="0 0 12 9" fill="none"><path d="M1 4.5L4.2 7.7L11 1" stroke="#62A8E8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Hébergement souverain</b><p>Environnements administrés : mises à jour, sécurité, sauvegardes et supervision.</p></div></div>
+      </div>
+      <div class="techrow"><span class="tl">Construit avec</span><span class="ti">
+        <img src="assets/tech/nvidia.svg" alt="NVIDIA"><img src="assets/tech/googlecloud.svg" alt="Google Cloud"><img src="assets/tech/ovh.svg" alt="OVHcloud"><img src="assets/tech/scaleway.svg" alt="Scaleway"></span></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===================== PAGE 4 : CONTACT ===================== -->
+<div class="page p4">
+  <div class="glowfx2"></div>
+  <div class="phead">
+    <img class="logo" src="assets/logo.svg" alt="Pixel Drop Technologies">
+    <span class="num">Parlons-en</span>
+  </div>
+  <div class="body">
+    <h2>Discutons de <span class="a">vos besoins.</span></h2>
+    <p class="sub">Un premier échange pour cartographier vos enjeux et identifier les leviers d'automatisation et d'IA les plus utiles à votre activité.</p>
+
+    <div class="cwrap">
+      <div class="contact">
+        <div class="crow"><span class="lab">Téléphone</span><span class="val">01 83 64 17 41</span></div>
+        <div class="crow"><span class="lab">Email</span><span class="val">contact@pixel-drop.com</span></div>
+        <div class="crow"><span class="lab">Site internet</span><span class="val">pixel-drop.com</span></div>
+        <div class="crow"><span class="lab">Adresse</span><span class="val">58 Rue de la Chaussée d'Antin, 75009 Paris</span></div>
+      </div>
+      <div class="qrbox">
+        <img src="assets/qr-whatsapp.png" alt="QR WhatsApp">
+        <p>Scannez pour démarrer une<br>discussion <b>WhatsApp</b> avec nous.</p>
+      </div>
+    </div>
+
+    <div class="vprops">
+      <div class="vp"><b>Un interlocuteur unique</b><span>Un suivi personnalisé, pas un ticket parmi d'autres.</span></div>
+      <div class="vp"><b>De l'audit à la production</b><span>On part de votre existant, on va jusqu'au déploiement.</span></div>
+      <div class="vp"><b>Vos données protégées</b><span>Traitements encadrés et conformes au RGPD.</span></div>
+    </div>
+  </div>
+
+  <div class="pfoot">
+    <div class="pl">
+      <img class="clg" src="assets/clients/anthropic.svg" alt="Anthropic">
+      <img class="clg" src="assets/clients/openai.svg" alt="OpenAI">
+      <img class="clg" src="assets/clients/n8n.svg" alt="n8n">
+      <img class="clg" src="assets/clients/databricks.svg" alt="Databricks">
+    </div>
+    <div class="meta">Pixel Drop Technologies · Paris</div>
+  </div>
+</div>
+
+</body>
+</html>

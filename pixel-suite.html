@@ -106,7 +106,7 @@ a.pd-link{cursor:pointer}
 <link rel="canonical" href="https://pixel-drop.com/pixel-suite">
 <meta property="og:title" content="Pixel Suite — la plateforme d'agents IA souveraine">
 <meta property="og:description" content="Vos agents IA, vos automatisations et vos données sur un seul serveur. Souverain, modèle interchangeable. Demandez une démo.">
-<meta property="og:image" content="https://pixel-drop.com/pixel-suite-hero.jpg">
+<meta property="og:image" content="https://pixel-drop.com/pixel-suite-hero.jpg?v=3">
 <meta property="og:url" content="https://pixel-drop.com/pixel-suite">
 <meta property="og:type" content="website">
 <style id="pd-logos-css">
@@ -243,17 +243,17 @@ a.pd-link{cursor:pointer}
     .plq-belt { margin: 34px 0 8px; }
   }
 </style>
-<style>.plq-visual{background:#0a1113!important;border-color:rgba(255,255,255,.08)!important}.plq-visual img{object-fit:cover!important}</style>
+<style>.plq-visual{background:#eef1f2!important;flex:0 0 auto!important;padding:0!important;border:1px solid rgba(0,0,0,.06)!important}.plq-visual img{width:100%!important;height:auto!important;object-fit:contain!important}</style>
 </head><body><header class="pd-nav">
   <div class="pd-nav-inner">
     <a href="/" class="pd-logo"><img src="brand/pixeldrop-lockup.svg" alt="Pixel Drop Technologies"></a>
-    <nav class="pd-links"><a href="audit-conseil" class="pd-link">Audit &amp; Conseil</a><div class="pd-item pd-has-drop2"><a href="integration-ia" class="pd-link pd-trig2">Int&eacute;gration IA <span class="pd-dot" aria-hidden="true"></span><span class="pd-car">&#9662;</span></a><div class="pd-drop2"><a href="automatisation">Automatisation</a><a href="integration-ia">Agents IA</a><a href="agent-email">Agent Email</a><a href="pilotage-data">Pilotage Data</a></div></div><div class="pd-item pd-has-drop2"><a href="infrastructure" class="pd-link pd-trig2">Infrastructure <span class="pd-car">&#9662;</span></a><div class="pd-drop2"><a href="pixel-agent">Suite IA <span style="display:inline-block;margin-left:7px;padding:1px 7px;border-radius:999px;background:#6fa8b8;color:#06100f;font-size:9px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;vertical-align:1.5px">Nouveau</span></a><a href="infrastructure">Serveurs / puissance de calcul</a><a href="industrie">Industrie</a><a href="infrastructure">Maintenance</a></div></div></nav>
+    <nav class="pd-links"><a href="audit-conseil" class="pd-link">Audit &amp; Conseil</a><div class="pd-item pd-has-drop2"><a href="integration-ia" class="pd-link pd-trig2">Int&eacute;gration IA <span class="pd-dot" aria-hidden="true"></span><span class="pd-car">&#9662;</span></a><div class="pd-drop2"><a href="automatisation">Automatisation</a><a href="integration-ia">Agents IA</a><a href="agent-email">Agent Email</a><a href="pilotage-data">Pilotage Data</a></div></div><div class="pd-item pd-has-drop2"><a href="infrastructure" class="pd-link pd-trig2">Infrastructure <span class="pd-car">&#9662;</span></a><div class="pd-drop2"><a href="pixel-agent">Suite IA <span style="display:inline-block;margin-left:7px;padding:1px 7px;border-radius:999px;background:#6fa8b8;color:#06100f;font-size:9px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;vertical-align:1.5px">Nouveau</span></a><a href="infrastructure">Serveurs / puissance de calcul</a><a href="industrie">Industrie</a><a href="maintenance">Maintenance</a></div></div></nav>
     <div class="pd-actions">
       <div class="pd-item pd-has-drop">
         <div class="c-cta secondary pd-trigger pd-ccta" role="button" tabindex="0"><div>&Ecirc;tre rappel&eacute;</div><div class="c-corners"><div class="c-corner up-left"><div class="c-corner-line horizontal"></div><div class="c-corner-line vertical"></div></div><div class="c-corner up-right"><div class="c-corner-line horizontal up-right"></div><div class="c-corner-line vertical up-right"></div></div><div class="c-corner down-left"><div class="c-corner-line horizontal down-left"></div><div class="c-corner-line vertical down-left"></div></div><div class="c-corner down-right"><div class="c-corner-line horizontal down-right"></div><div class="c-corner-line vertical down-right"></div></div></div></div>
         <div class="pd-drop right pd-drop-pad">
           <div class="pd-cbtitle">Laissez votre num&eacute;ro, on vous rappelle.</div>
-          <form class="pd-cbform" onsubmit="var f=this;var fd=new FormData(f);fd.append('_type','Rappel header');fetch('/form-handler.php',{method:'POST',body:fd});f.querySelector('input').disabled=true;f.querySelector('button').style.display='none';f.parentNode.querySelector('.pd-cbtitle').textContent='Merci ! On vous rappelle tr&egrave;s vite.';return false">
+          <form class="pd-cbform" onsubmit="return pdSubmitCallbackForm(this,event,'header')">
             <input type="tel" name="telephone" placeholder="06 12 34 56 78" required>
             <button type="submit">Rappelez-moi</button>
           </form>
@@ -268,7 +268,7 @@ a.pd-link{cursor:pointer}
       </div>
     </div>
   </div>
-</header><button class="pd-burger" aria-label="Ouvrir le menu" onclick="pdOpenMenu()"><span></span><span></span><span></span></button><div class="pd-mobile" id="pdMobile" aria-hidden="true"><div class="pd-mobile-top"><a href="/" class="pd-logo"><img src="brand/pixeldrop-lockup.svg" alt="Pixel Drop"></a><button class="pd-mclose" aria-label="Fermer" onclick="pdCloseMenu()">&times;</button></div><nav class="pd-mlinks"><a href="audit-conseil" class="pd-mlink">Audit &amp; Conseil</a><div class="pd-macc"><button class="pd-mlink pd-macc-t" onclick="pdAcc(this)">Int&eacute;gration IA <span class="pd-dot" aria-hidden="true"></span><span class="pd-macc-c">+</span></button><div class="pd-macc-p"><a href="automatisation">Automatisation</a><a href="integration-ia">Agents IA</a><a href="agent-email">Agent Email</a><a href="pilotage-data">Pilotage Data</a></div></div><div class="pd-macc"><button class="pd-mlink pd-macc-t" onclick="pdAcc(this)">Infrastructure <span class="pd-macc-c">+</span></button><div class="pd-macc-p"><a href="pixel-agent">Suite IA <span style="display:inline-block;margin-left:7px;padding:1px 7px;border-radius:999px;background:#6fa8b8;color:#06100f;font-size:9px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;vertical-align:1.5px">Nouveau</span></a><a href="infrastructure">Serveurs / puissance de calcul</a><a href="industrie">Industrie</a><a href="infrastructure">Maintenance</a></div></div><a href="a-propos" class="pd-mlink">&Agrave; propos</a></nav><div class="pd-mfoot"><form class="pd-mcbform" onsubmit="var f=this;var fd=new FormData(f);fd.append('_type','Rappel mobile');fetch('/form-handler.php',{method:'POST',body:fd});f.innerHTML='<div class=&quot;pd-mcb-ok&quot;>Merci ! On vous rappelle tr&egrave;s vite.</div>';return false"><input type="tel" name="telephone" placeholder="Votre num&eacute;ro" required><button type="submit">&Ecirc;tre rappel&eacute;</button></form><a href="tel:+33183641741" class="c-cta secondary pd-mcta"><div>Nous appeler : 01 83 64 17 41</div><div class="c-corners"><div class="c-corner up-left"><div class="c-corner-line horizontal"></div><div class="c-corner-line vertical"></div></div><div class="c-corner up-right"><div class="c-corner-line horizontal up-right"></div><div class="c-corner-line vertical up-right"></div></div><div class="c-corner down-left"><div class="c-corner-line horizontal down-left"></div><div class="c-corner-line vertical down-left"></div></div><div class="c-corner down-right"><div class="c-corner-line horizontal down-right"></div><div class="c-corner-line vertical down-right"></div></div></div></a><div class="pd-mcontact"><a href="https://wa.me/33183641741">WhatsApp</a> &middot; <a href="mailto:contact@pixel-drop.com">contact@pixel-drop.com</a></div></div></div><div data-wf--global-component--variant="base" class="global-component"><div class="navbar-functionality w-embed w-script"><script>
+</header><button class="pd-burger" aria-label="Ouvrir le menu" onclick="pdOpenMenu()"><span></span><span></span><span></span></button><div class="pd-mobile" id="pdMobile" aria-hidden="true"><div class="pd-mobile-top"><a href="/" class="pd-logo"><img src="brand/pixeldrop-lockup.svg" alt="Pixel Drop"></a><button class="pd-mclose" aria-label="Fermer" onclick="pdCloseMenu()">&times;</button></div><nav class="pd-mlinks"><a href="audit-conseil" class="pd-mlink">Audit &amp; Conseil</a><div class="pd-macc"><button class="pd-mlink pd-macc-t" onclick="pdAcc(this)">Int&eacute;gration IA <span class="pd-dot" aria-hidden="true"></span><span class="pd-macc-c">+</span></button><div class="pd-macc-p"><a href="automatisation">Automatisation</a><a href="integration-ia">Agents IA</a><a href="agent-email">Agent Email</a><a href="pilotage-data">Pilotage Data</a></div></div><div class="pd-macc"><button class="pd-mlink pd-macc-t" onclick="pdAcc(this)">Infrastructure <span class="pd-macc-c">+</span></button><div class="pd-macc-p"><a href="pixel-agent">Suite IA <span style="display:inline-block;margin-left:7px;padding:1px 7px;border-radius:999px;background:#6fa8b8;color:#06100f;font-size:9px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;vertical-align:1.5px">Nouveau</span></a><a href="infrastructure">Serveurs / puissance de calcul</a><a href="industrie">Industrie</a><a href="maintenance">Maintenance</a></div></div><a href="a-propos" class="pd-mlink">&Agrave; propos</a></nav><div class="pd-mfoot"><form class="pd-mcbform" onsubmit="return pdSubmitCallbackForm(this,event,'mobile')"><input type="tel" name="telephone" placeholder="Votre num&eacute;ro" required><button type="submit">&Ecirc;tre rappel&eacute;</button></form><a href="tel:+33183641741" class="c-cta secondary pd-mcta"><div>Nous appeler : 01 83 64 17 41</div><div class="c-corners"><div class="c-corner up-left"><div class="c-corner-line horizontal"></div><div class="c-corner-line vertical"></div></div><div class="c-corner up-right"><div class="c-corner-line horizontal up-right"></div><div class="c-corner-line vertical up-right"></div></div><div class="c-corner down-left"><div class="c-corner-line horizontal down-left"></div><div class="c-corner-line vertical down-left"></div></div><div class="c-corner down-right"><div class="c-corner-line horizontal down-right"></div><div class="c-corner-line vertical down-right"></div></div></div></a><div class="pd-mcontact"><a href="https://wa.me/33183641741">WhatsApp</a> &middot; <a href="mailto:contact@pixel-drop.com">contact@pixel-drop.com</a></div></div></div><div data-wf--global-component--variant="base" class="global-component"><div class="navbar-functionality w-embed w-script"><script>
 document.addEventListener('DOMContentLoaded', function () {
   var toggle = document.getElementById('navbar-menu');
   var menu = document.querySelector('.c-nav-menu');
@@ -389,7 +389,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <p class="plq-lead">Une plateforme d'agents IA installée sur un seul serveur, chez vous ou dans un cloud souverain. Vous parlez à vos agents, vous automatisez vos process, vos données ne sortent jamais.</p>
 
         <div class="plq-visual">
-          <img src="pixel-suite-hero.jpg" alt="Pixel Suite, agents et modules" width="2200" height="920">
+          <img src="pixel-suite-hero.jpg?v=3" alt="Pixel Suite, agents et modules" width="2200" height="920">
         </div>
 
         <ul class="plq-points">
@@ -587,4 +587,30 @@ document.addEventListener('DOMContentLoaded', () => {
     <path d="M10.3145 13.6905L10.3145 1.07031" stroke="currentcolor" stroke-width="1.00601" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M4.0038 7.38042L10.3139 1.07031L16.624 7.38042" stroke="currentcolor" stroke-width="1.00601" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-</svg></div></a></div></div></div></div><script id="pd-year-js">document.querySelectorAll('.pd-year').forEach(function(e){e.textContent=new Date().getFullYear()})</script></section><script>function pdOpenMenu(){document.getElementById('pdMobile').classList.add('open');document.body.classList.add('pd-noscroll')}function pdCloseMenu(){document.getElementById('pdMobile').classList.remove('open');document.body.classList.remove('pd-noscroll')}</script><script>function pdAcc(b){b.parentElement.classList.toggle('open')}</script></body></html>
+</svg></div></a></div></div></div></div><script id="pd-year-js">document.querySelectorAll('.pd-year').forEach(function(e){e.textContent=new Date().getFullYear()})</script></section><script>function pdOpenMenu(){document.getElementById('pdMobile').classList.add('open');document.body.classList.add('pd-noscroll')}function pdCloseMenu(){document.getElementById('pdMobile').classList.remove('open');document.body.classList.remove('pd-noscroll')}</script><script>function pdAcc(b){b.parentElement.classList.toggle('open')}</script><script id="pd-global-form-js">
+window.pdSubmitCallbackForm=async function(form,event,variant){
+  if(event)event.preventDefault();
+  if(form.dataset.sending==='1')return false;
+  form.dataset.sending='1';
+  var button=form.querySelector('button');
+  if(button)button.disabled=true;
+  var data=new FormData(form);data.append('_type',variant==='header'?'Rappel header':variant==='apporteur'?'Apporteur affaires':'Rappel mobile');
+  try{
+    var response=await fetch('/form-handler.php',{method:'POST',body:data});
+    var result=await response.json();
+    if(!response.ok||!result.ok)throw new Error('send');
+    if(variant==='header'||variant==='apporteur'){
+      var title=form.parentNode.querySelector(variant==='apporteur'?'.pd-app-form-title':'.pd-cbtitle');
+      if(title)title.textContent='Merci ! Votre demande a bien été transmise.';
+      form.style.display='none';
+    }else{
+      form.innerHTML='<div class="pd-mcb-ok">Merci ! Votre demande a bien été transmise.</div>';
+    }
+  }catch(error){
+    form.dataset.sending='0';if(button)button.disabled=false;
+    var message=form.querySelector('.pd-cb-error');
+    if(!message){message=document.createElement('p');message.className='pd-cb-error';message.style.cssText='color:#ff8e8e;margin:10px 0 0;font-size:12px';message.textContent='L’envoi n’a pas abouti. Appelez le 01 83 64 17 41.';form.appendChild(message);}
+  }
+  return false;
+};
+</script></body></html>
