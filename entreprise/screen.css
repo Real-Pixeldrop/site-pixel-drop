@@ -357,8 +357,9 @@ p {
     gap: 10px;
   }
 
-  .logo svg {
-    width: 176px;
+  .logo svg,
+  body.inner .logo svg {
+    width: 176px !important;
   }
 
   .nav__item {
