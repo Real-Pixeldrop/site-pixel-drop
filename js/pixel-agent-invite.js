@@ -83,10 +83,11 @@
     #pd-guide-invite .pdg-proof li{display:flex;align-items:flex-start;gap:9px;color:#fff;font-size:12px;line-height:1.35}
     #pd-guide-invite .pdg-proof svg{width:15px;height:15px;margin-top:1px;flex:none;color:#a9fff3}
     #pd-guide-invite .pdg-fields{display:grid;grid-template-columns:.8fr 1.2fr;gap:8px;margin-bottom:8px}
-    #pd-guide-invite .pdg-input{width:100%;min-width:0;height:42px;border:1px solid rgba(255,255,255,.25);background:rgba(4,25,29,.32);color:#fff;border-radius:10px;padding:10px 12px;font-size:12.5px;outline:none}
+    #pd-guide-invite .pdg-input{width:100%;min-width:0;height:42px;border:1px solid rgba(255,255,255,.42)!important;background:#f4f8f7!important;color:#102431!important;-webkit-text-fill-color:#102431!important;caret-color:#102431;border-radius:10px;padding:10px 12px;font-size:12.5px;outline:none}
     #pd-guide-invite .pdg-input[name='email']{grid-column:1/-1}
-    #pd-guide-invite .pdg-input::placeholder{color:rgba(255,255,255,.58)}
-    #pd-guide-invite .pdg-input:focus{border-color:#c7fff8;box-shadow:0 0 0 3px rgba(199,255,248,.13)}
+    #pd-guide-invite .pdg-input::placeholder{color:#687b83!important;-webkit-text-fill-color:#687b83!important;opacity:1}
+    #pd-guide-invite .pdg-input:focus{border-color:#c7fff8!important;box-shadow:0 0 0 3px rgba(199,255,248,.2)!important}
+    #pd-guide-invite .pdg-input:-webkit-autofill,#pd-guide-invite .pdg-input:-webkit-autofill:hover,#pd-guide-invite .pdg-input:-webkit-autofill:focus{-webkit-box-shadow:0 0 0 1000px #f4f8f7 inset!important;-webkit-text-fill-color:#102431!important;caret-color:#102431!important}
     #pd-guide-invite .pdg-consent{display:flex;align-items:flex-start;gap:8px;margin:4px 1px 11px;color:rgba(255,255,255,.75);font-size:9.5px;line-height:1.4;cursor:pointer}
     #pd-guide-invite .pdg-consent input{appearance:auto;-webkit-appearance:auto;margin:2px 0 0;accent-color:var(--pdg-teal);flex:none}
     #pd-guide-invite .pdg-consent a{color:#fff;text-underline-offset:2px}
@@ -150,8 +151,8 @@
         <div class="pdg-success" aria-live="polite">
           <div class="pdg-successmark">✓</div>
           <div class="pdg-panelhead">Accès confirmé</div>
-          <h3>Le guide est prêt.</h3>
-          <p class="pdg-panelcopy">Ouvrez-le maintenant. Si vous voulez passer du guide à un système concret, Pixel Drop Enterprise montre la suite.</p>
+          <h3>Votre guide est disponible.</h3>
+          <p class="pdg-panelcopy">Téléchargez-le ci-dessous. Pour aller plus loin, découvrez comment cadrer une feuille de route IA adaptée à votre entreprise.</p>
           <a class="pdg-primary" href="${GUIDE_URL}" target="_blank" rel="noopener"><span>Télécharger le guide</span><span class="pdg-arrow" aria-hidden="true">↓</span></a>
           <a class="pdg-secondary" href="${ENTERPRISE_URL}">Découvrir Pixel Drop Enterprise</a>
         </div>
