@@ -7,7 +7,7 @@
   var DISMISS_KEY = 'pd-guide-ia-dismissed-at';
   var CONVERTED_KEY = 'pd-guide-ia-converted';
   var DISMISS_DURATION = 30 * 60 * 1000;
-  var GUIDE_URL = '/docs/guide-reussir-virage-ia-pixel-drop.pdf?v=20260818-3';
+  var GUIDE_URL = '/docs/guide-reussir-virage-ia-pixel-drop.pdf?v=20260818-4';
   var ENTERPRISE_URL = '/entreprise/?source=guide-ia-popup';
 
   function readConverted() {
@@ -58,11 +58,11 @@
     #pd-guide-invite .pdg-eyebrow{margin-top:4px;color:#7b909b;font-family:'DM Mono',ui-monospace,monospace;font-size:8.5px;font-weight:600;letter-spacing:.09em!important;text-transform:uppercase!important}
     #pd-guide-invite .pdg-bookzone{height:176px;display:grid;place-items:center;position:relative;margin:0 0 13px;border-radius:14px;overflow:hidden;background:radial-gradient(circle at 50% 45%,rgba(95,214,201,.22),transparent 48%),linear-gradient(145deg,#eef5f6,#dbe8eb);border:1px solid rgba(7,17,23,.06)}
     #pd-guide-invite .pdg-bookzone::after{content:'';position:absolute;inset:0;background:linear-gradient(110deg,transparent 20%,rgba(255,255,255,.58) 45%,transparent 68%);transform:translateX(-100%);animation:pdgBookShine 5s ease-in-out 2s infinite}
-    #pd-guide-invite .pdg-book{position:relative;width:92px;height:130px;transform:perspective(500px) rotateY(-12deg) rotateX(3deg);filter:drop-shadow(12px 15px 12px rgba(7,17,23,.24));transition:transform .3s ease;z-index:2}
+    #pd-guide-invite .pdg-book{position:relative;width:82px;height:132px;transform:perspective(500px) rotateY(-12deg) rotateX(3deg);filter:drop-shadow(12px 15px 12px rgba(7,17,23,.24));transition:transform .3s ease;z-index:2}
     #pd-guide-invite .pdg-card:hover .pdg-book{transform:perspective(500px) rotateY(-5deg) rotateX(1deg) translateY(-2px)}
     #pd-guide-invite .pdg-book img{display:block;width:100%;height:100%;object-fit:cover;border-radius:2px 5px 5px 2px}
-    #pd-guide-invite .pdg-book::before{content:'';position:absolute;left:-6px;top:4px;width:7px;height:122px;background:linear-gradient(90deg,#071117,#244250);transform:skewY(-35deg);transform-origin:right top;border-radius:2px 0 0 2px}
-    #pd-guide-invite .pdg-book::after{content:'80 PAGES';position:absolute;right:-50px;top:10px;color:var(--pdg-teal-dark);font-family:'DM Mono',ui-monospace,monospace;font-size:8px;font-weight:700;letter-spacing:.08em!important}
+    #pd-guide-invite .pdg-book::before{content:'';position:absolute;left:-6px;top:4px;width:7px;height:124px;background:linear-gradient(90deg,#071117,#244250);transform:skewY(-35deg);transform-origin:right top;border-radius:2px 0 0 2px}
+    #pd-guide-invite .pdg-book::after{content:'138 PAGES';position:absolute;right:-54px;top:10px;color:var(--pdg-teal-dark);font-family:'DM Mono',ui-monospace,monospace;font-size:8px;font-weight:700;letter-spacing:.08em!important}
     #pd-guide-invite h2{margin:0!important;color:var(--pdg-ink)!important;font-family:'Ppmori','Gotham',sans-serif!important;font-size:21px!important;line-height:1.13!important;font-weight:600!important;letter-spacing:-.025em!important;text-align:left!important;white-space:normal!important;overflow-wrap:break-word!important}
     #pd-guide-invite .pdg-copy{margin:8px 0 12px;color:#5f727d;font-size:12.5px;line-height:1.45}
     #pd-guide-invite .pdg-source{display:flex;align-items:flex-start;gap:7px;color:#637984;font-size:9.5px;line-height:1.35;margin-bottom:13px}
@@ -113,7 +113,7 @@
     @keyframes pdgBookShine{0%,45%{transform:translateX(-110%)}68%,100%{transform:translateX(110%)}}
     @keyframes pdgBreath{0%,100%{box-shadow:0 24px 70px rgba(0,0,0,.26),0 6px 18px rgba(7,17,23,.12),0 0 0 4px rgba(95,214,201,.11)}50%{box-shadow:0 28px 78px rgba(0,0,0,.30),0 9px 25px rgba(23,138,124,.13),0 0 0 8px rgba(95,214,201,.09)}}
     @media(max-width:820px){#pd-guide-invite{right:12px;bottom:12px;max-width:calc(100vw - 24px)}#pd-guide-invite.is-open .pdg-card{display:none}#pd-guide-invite .pdg-panel{border-radius:20px;width:0;transform:translateY(18px)}#pd-guide-invite.is-open .pdg-panel{width:min(440px,calc(100vw - 24px));transform:none}#pd-guide-invite .pdg-panelinner{width:min(440px,calc(100vw - 24px));min-height:auto;padding:25px 24px 22px}}
-    @media(max-width:520px){#pd-guide-invite .pdg-card{width:min(304px,calc(100vw - 24px));min-height:auto;padding:17px;border-radius:18px}#pd-guide-invite .pdg-bookzone{height:118px}#pd-guide-invite .pdg-book{width:67px;height:95px}#pd-guide-invite .pdg-book::before{height:88px}#pd-guide-invite .pdg-book::after{right:-45px;font-size:7px}#pd-guide-invite h2{font-size:18px!important}#pd-guide-invite .pdg-copy{font-size:11.5px}#pd-guide-invite .pdg-source{display:none}#pd-guide-invite .pdg-panel h3{font-size:21px!important}#pd-guide-invite .pdg-fields{grid-template-columns:1fr}#pd-guide-invite .pdg-input[name='email']{grid-column:auto}}
+    @media(max-width:520px){#pd-guide-invite .pdg-card{width:min(304px,calc(100vw - 24px));min-height:auto;padding:17px;border-radius:18px}#pd-guide-invite .pdg-bookzone{height:118px}#pd-guide-invite .pdg-book{width:59px;height:95px}#pd-guide-invite .pdg-book::before{height:88px}#pd-guide-invite .pdg-book::after{right:-48px;font-size:7px}#pd-guide-invite h2{font-size:18px!important}#pd-guide-invite .pdg-copy{font-size:11.5px}#pd-guide-invite .pdg-source{display:none}#pd-guide-invite .pdg-panel h3{font-size:21px!important}#pd-guide-invite .pdg-fields{grid-template-columns:1fr}#pd-guide-invite .pdg-input[name='email']{grid-column:auto}}
     @media(prefers-reduced-motion:reduce){#pd-guide-invite .pdg-card,#pd-guide-invite .pdg-panel,#pd-guide-invite .pdg-pill,#pd-guide-invite .pdg-book{transition:none!important;animation:none!important}#pd-guide-invite .pdg-card::before,#pd-guide-invite .pdg-shine,#pd-guide-invite .pdg-bookzone::after{animation:none!important}}
   `;
   document.head.appendChild(style);
@@ -130,7 +130,7 @@
       <div class="pdg-panelinner">
         <div class="pdg-formview">
           <div class="pdg-panelhead">Guide pratique · Pixel Drop</div>
-          <h3>80 pages pour comprendre le terrain et cadrer le premier pilote.</h3>
+          <h3>138 pages pour comprendre le terrain et cadrer le premier pilote.</h3>
           <p class="pdg-panelcopy">Étude complète commentée, graphiques, témoignages, cinq cas réels et cahier d’action Pixel Drop.</p>
           <ul class="pdg-proof"><li>${checkSvg}<span>Données Bpifrance Le Lab, 1 209 dirigeants</span></li><li>${checkSvg}<span>Repères CNIL, France Num et AI Act</span></li><li>${checkSvg}<span>Méthode conçue pour les PME</span></li></ul>
           <form class="pdg-form" novalidate>
@@ -175,7 +175,7 @@
       <p class="pdg-source"><i></i><span>Édition commentée d’après l’étude Bpifrance Le Lab, avec attribution complète.</span></p>
       <button class="pdg-open" type="button"><span>${converted ? 'Voir la suite' : 'Accéder au guide'}</span><span class="pdg-arrow" aria-hidden="true">→</span></button>
     </section>
-    <button class="pdg-pill" type="button" aria-label="Rouvrir le guide IA"><span class="pdg-pillicon">↗</span><span>Guide IA · 80 pages</span></button>`;
+    <button class="pdg-pill" type="button" aria-label="Rouvrir le guide IA"><span class="pdg-pillicon">↗</span><span>Guide IA · 138 pages</span></button>`;
   document.body.appendChild(root);
 
   var panel = root.querySelector('.pdg-panel');
