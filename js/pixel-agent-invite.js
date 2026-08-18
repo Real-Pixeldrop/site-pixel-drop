@@ -8,7 +8,7 @@
   var CONVERTED_KEY = 'pd-guide-ia-converted';
   var MAIN_SITE_VISITED_KEY = 'pd-main-site-visited-at';
   var DISMISS_DURATION = 30 * 60 * 1000;
-  var GUIDE_URL = '/docs/guide-reussir-virage-ia-pixel-drop.pdf?v=20260818-6';
+  var GUIDE_URL = '/docs/guide-reussir-virage-ia-pixel-drop.pdf?v=20260818-7';
   var ENTERPRISE_URL = '/entreprise/?source=guide-ia-popup';
   var IS_ENTERPRISE = /^\/entreprise(?:\/|$)/.test(window.location.pathname);
 
@@ -208,7 +208,7 @@
       <button class="pdg-close" type="button" aria-label="Fermer">&times;</button>
       <span class="pdg-shine" aria-hidden="true"></span>
       <div class="pdg-head"><div class="pdg-brandmark">P</div><div><div class="pdg-titleline">Réussir le virage IA</div><div class="pdg-eyebrow">Guide pratique · PME</div></div></div>
-      <div class="pdg-bookzone"><div class="pdg-book"><img src="/media/guide-ia/guide-cover.webp?v=20260818-6" alt="Couverture du guide Réussir le virage IA"></div></div>
+      <div class="pdg-bookzone"><div class="pdg-book"><img src="/media/guide-ia/guide-cover.webp?v=20260818-7" alt="Couverture du guide Réussir le virage IA"></div></div>
       <h2>De l’idée IA au premier résultat mesurable.</h2>
       <p class="pdg-copy">Une étude riche pour comprendre les usages, les freins et les conditions d’une transformation IA utile.</p>
       <p class="pdg-source"><i></i><span>D’après l’étude Bpifrance Le Lab publiée en juin 2025.</span></p>
