@@ -6,9 +6,11 @@
   var PREVIEW = Boolean(previewMode);
   var DISMISS_KEY = 'pd-guide-ia-dismissed-at';
   var CONVERTED_KEY = 'pd-guide-ia-converted';
+  var MAIN_SITE_VISITED_KEY = 'pd-main-site-visited-at';
   var DISMISS_DURATION = 30 * 60 * 1000;
   var GUIDE_URL = '/docs/guide-reussir-virage-ia-pixel-drop.pdf?v=20260818-6';
   var ENTERPRISE_URL = '/entreprise/?source=guide-ia-popup';
+  var IS_ENTERPRISE = /^\/entreprise(?:\/|$)/.test(window.location.pathname);
 
   function readConverted() {
     if (previewMode === 'enterprise') return true;
@@ -31,6 +33,42 @@
   function clearDismissal() {
     try { localStorage.removeItem(DISMISS_KEY); } catch (e) {}
   }
+
+  function hasVisitedMainSite() {
+    try { return Boolean(localStorage.getItem(MAIN_SITE_VISITED_KEY)); } catch (e) { return false; }
+  }
+
+  function markMainSiteVisit() {
+    if (IS_ENTERPRISE) return;
+    try { localStorage.setItem(MAIN_SITE_VISITED_KEY, String(Date.now())); } catch (e) {}
+  }
+
+  function comesFromGuide() {
+    var source = String(params.get('source') || '').toLowerCase();
+    return source === 'guide-ia-popup' || source.indexOf('guide-ia-') === 0;
+  }
+
+  function comesFromMainSite() {
+    if (!document.referrer) return false;
+    try {
+      var referrer = new URL(document.referrer);
+      var referrerIsEnterprise = /^\/entreprise(?:\/|$)/.test(referrer.pathname);
+      return referrer.origin === window.location.origin && !referrerIsEnterprise;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  markMainSiteVisit();
+
+  var suppressOnEnterprise = IS_ENTERPRISE && !PREVIEW && (
+    readConverted() ||
+    hasVisitedMainSite() ||
+    comesFromGuide() ||
+    comesFromMainSite()
+  );
+
+  if (suppressOnEnterprise) return;
 
   document.getElementById('pd-guide-invite')?.remove();
   document.getElementById('pd-guide-invite-css')?.remove();
@@ -255,6 +293,6 @@
     window.setTimeout(function () {
       root.classList.add('is-visible');
       if (previewMode === 'form' || previewMode === 'success' || previewMode === 'enterprise') openPanel();
-    }, PREVIEW ? 80 : 2600);
+    }, PREVIEW ? 80 : (IS_ENTERPRISE ? 1200 : 2600));
   }
 })();
