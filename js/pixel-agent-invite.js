@@ -7,7 +7,7 @@
   var DISMISS_KEY = 'pd-guide-ia-dismissed-at';
   var CONVERTED_KEY = 'pd-guide-ia-converted';
   var DISMISS_DURATION = 30 * 60 * 1000;
-  var GUIDE_URL = '/docs/guide-reussir-virage-ia-pixel-drop.pdf';
+  var GUIDE_URL = '/docs/guide-reussir-virage-ia-pixel-drop.pdf?v=20260818-3';
   var ENTERPRISE_URL = '/entreprise/?source=guide-ia-popup';
 
   function readConverted() {
@@ -62,7 +62,7 @@
     #pd-guide-invite .pdg-card:hover .pdg-book{transform:perspective(500px) rotateY(-5deg) rotateX(1deg) translateY(-2px)}
     #pd-guide-invite .pdg-book img{display:block;width:100%;height:100%;object-fit:cover;border-radius:2px 5px 5px 2px}
     #pd-guide-invite .pdg-book::before{content:'';position:absolute;left:-6px;top:4px;width:7px;height:122px;background:linear-gradient(90deg,#071117,#244250);transform:skewY(-35deg);transform-origin:right top;border-radius:2px 0 0 2px}
-    #pd-guide-invite .pdg-book::after{content:'28 PAGES';position:absolute;right:-50px;top:10px;color:var(--pdg-teal-dark);font-family:'DM Mono',ui-monospace,monospace;font-size:8px;font-weight:700;letter-spacing:.08em!important}
+    #pd-guide-invite .pdg-book::after{content:'80 PAGES';position:absolute;right:-50px;top:10px;color:var(--pdg-teal-dark);font-family:'DM Mono',ui-monospace,monospace;font-size:8px;font-weight:700;letter-spacing:.08em!important}
     #pd-guide-invite h2{margin:0!important;color:var(--pdg-ink)!important;font-family:'Ppmori','Gotham',sans-serif!important;font-size:21px!important;line-height:1.13!important;font-weight:600!important;letter-spacing:-.025em!important;text-align:left!important;white-space:normal!important;overflow-wrap:break-word!important}
     #pd-guide-invite .pdg-copy{margin:8px 0 12px;color:#5f727d;font-size:12.5px;line-height:1.45}
     #pd-guide-invite .pdg-source{display:flex;align-items:flex-start;gap:7px;color:#637984;font-size:9.5px;line-height:1.35;margin-bottom:13px}
@@ -130,8 +130,8 @@
       <div class="pdg-panelinner">
         <div class="pdg-formview">
           <div class="pdg-panelhead">Guide pratique · Pixel Drop</div>
-          <h3>28 pages pour passer de l’idée au premier pilote.</h3>
-          <p class="pdg-panelcopy">Chiffres clés, cas réels, grille de priorité, gouvernance et feuille de route 90 jours.</p>
+          <h3>80 pages pour comprendre le terrain et cadrer le premier pilote.</h3>
+          <p class="pdg-panelcopy">Étude complète commentée, graphiques, témoignages, cinq cas réels et cahier d’action Pixel Drop.</p>
           <ul class="pdg-proof"><li>${checkSvg}<span>Données Bpifrance Le Lab, 1 209 dirigeants</span></li><li>${checkSvg}<span>Repères CNIL, France Num et AI Act</span></li><li>${checkSvg}<span>Méthode conçue pour les PME</span></li></ul>
           <form class="pdg-form" novalidate>
             <input type="hidden" name="_type" value="Guide Réussir le virage IA">
@@ -172,10 +172,10 @@
       <div class="pdg-bookzone"><div class="pdg-book"><img src="/media/guide-ia/guide-cover.webp" alt="Couverture du guide Réussir le virage IA"></div></div>
       <h2>De l’idée IA au premier résultat mesurable.</h2>
       <p class="pdg-copy">Une méthode claire pour choisir le bon cas d’usage, cadrer les risques et lancer un pilote en 90 jours.</p>
-      <p class="pdg-source"><i></i><span>Basé sur l’étude Bpifrance Le Lab et des sources publiques 2026.</span></p>
+      <p class="pdg-source"><i></i><span>Édition commentée d’après l’étude Bpifrance Le Lab, avec attribution complète.</span></p>
       <button class="pdg-open" type="button"><span>${converted ? 'Voir la suite' : 'Accéder au guide'}</span><span class="pdg-arrow" aria-hidden="true">→</span></button>
     </section>
-    <button class="pdg-pill" type="button" aria-label="Rouvrir le guide IA"><span class="pdg-pillicon">↗</span><span>Guide IA · 28 pages</span></button>`;
+    <button class="pdg-pill" type="button" aria-label="Rouvrir le guide IA"><span class="pdg-pillicon">↗</span><span>Guide IA · 80 pages</span></button>`;
   document.body.appendChild(root);
 
   var panel = root.querySelector('.pdg-panel');
