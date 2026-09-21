@@ -246,7 +246,7 @@
       if (next.querySelector('.kanban')) next.querySelector('.kanban').scrollLeft = scrollX;
       document.querySelector('.result-count').textContent = parsed.querySelector('.result-count').textContent;
       document.querySelector('.workspace-search [name=page]').value = next.dataset.view;
-      ['q','focus','stage'].forEach(name => {
+      ['q','focus','stage','action_period'].forEach(name => {
         const field = document.querySelector('.workspace-search [name='+name+']');
         if (field) field.value = parsed.querySelector('.workspace-search [name='+name+']').value;
       });
