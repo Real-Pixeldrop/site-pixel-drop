@@ -65,7 +65,7 @@ label{display:grid;gap:6px;font-size:13px;font-weight:500}
 .main-nav a:hover,.main-nav a.active{background:#f0f0ed;color:var(--ink)}
 .user-menu>a{display:flex;gap:8px;align-items:center;text-decoration:none;font-size:12px}.user-menu small{display:none}
 .avatar{position:relative;width:26px;height:26px;flex:0 0 26px;display:inline-grid;place-items:center;border-radius:50%;overflow:hidden;background:#ededea;color:#52524f;font-size:12px}.avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.owner-picker{display:flex;align-items:center;gap:7px;min-width:0}.owner-picker select{flex:1;min-width:0}.owner-picker .avatar{width:24px;height:24px;flex-basis:24px}.contact-database .owner-picker{padding-top:2px}.contact-database th:nth-child(6){width:180px}
-.content{padding:32px 32px 64px;max-width:1800px;margin:auto}
+.content{padding:32px 24px 64px;max-width:1800px;margin:auto}
 .login-body{background:#fafaf9}.login-shell{min-height:100svh;display:grid;place-items:center;padding:32px 20px}
 .login-card{width:min(360px,100%);padding:0}.login-card .brand-lockup{margin-bottom:40px}.login-card h1{font-size:25px;margin-bottom:8px}
 .login-intro{color:var(--muted);font-size:14px;margin-bottom:28px}.login-card input{height:42px}.login-card .button{height:40px;margin-top:4px}
@@ -130,7 +130,7 @@ body.resizing-columns,body.resizing-columns *{cursor:col-resize!important;user-s
 .back-link{display:inline-block;font-size:13px;color:var(--muted);text-decoration:none;margin-bottom:15px}
 .page-heading{margin:0 0 24px}.page-heading>p,.page-heading>div>p{color:var(--muted);max-width:65ch;font-size:14px}
 .lead-heading h1{display:inline;margin-right:12px}.lead-heading .back-link{display:block;width:max-content}
-.detail-layout{display:grid;grid-template-columns:minmax(400px,690px) minmax(240px,340px);gap:44px;max-width:1100px;margin-inline:auto}.lead-heading{max-width:1100px;margin-inline:auto}
+.detail-layout{display:grid;grid-template-columns:minmax(0,2fr) minmax(280px,1fr);gap:32px}.lead-heading{max-width:none}
 .form-card,.activity-panel,.account-card{min-width:0}.lead-form h2{margin:22px 0 10px}.lead-form h2:first-of-type{margin-top:0}
 .property-row{display:grid;grid-template-columns:132px minmax(0,1fr);align-items:center;gap:10px;padding:3px 0;font-weight:400}
 .property-row>span{font-size:13px;color:var(--muted)}
@@ -303,3 +303,27 @@ body.resizing-columns,body.resizing-columns *{cursor:col-resize!important;user-s
 
 .company-account{border-bottom:1px solid var(--line)}.company-account-link{display:flex;align-items:center;gap:16px;padding:18px 12px;min-height:64px;color:var(--text);text-decoration:none}.company-account-link:hover{background:var(--subtle)}.company-account-link:focus-visible{outline:2px solid #6795a3;outline-offset:-2px}.company-name small{display:block;font-size:12px;color:var(--muted);font-weight:400;margin-top:5px}.companies-heading>.button{margin-left:auto}.company-detail{max-width:1100px}.company-detail h2{font-size:18px;font-weight:600}.company-form{max-width:740px}.company-form .form-actions{position:static;flex-wrap:wrap}.company-save-status{font-size:12px;color:var(--muted)}.company-related,.company-history{margin-top:36px;padding-top:16px;border-top:1px solid var(--line)}.company-related .company-contacts{padding-left:0}.company-history article{padding:15px 0;border-bottom:1px solid var(--line);overflow-wrap:anywhere}.company-history article>small{display:block;color:var(--muted);font-size:12px;margin-bottom:5px}.company-history article>strong{font-size:14px}.company-history article p{font-size:13px;white-space:pre-wrap}.company-history article>a{font-size:12px}.company-sources{margin-top:18px;max-width:740px;overflow-wrap:anywhere}.company-sources summary{cursor:pointer}.company-sources p{font-size:13px}
 @media(max-width:760px){.company-account-link{padding:16px 4px;gap:10px}.companies-heading>.button{margin-left:0}.company-form .property-row{grid-template-columns:95px minmax(0,1fr)}.company-form .form-actions .button{width:100%}.company-history{padding-bottom:20px}}
+
+/* Contact journal and independently scrollable activity history. */
+.journal-composer{border-top:1px solid var(--line);padding-top:18px;margin-top:4px}
+.journal-composer .note-form{margin-bottom:0}.journal-composer .note-form>.choice-field,.journal-composer .note-form>select{max-width:240px}
+.activity-panel{align-self:start;position:sticky;top:24px;padding-left:20px}
+.activity-panel-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:12px}
+.activity-panel-heading h2{margin:0}.activity-panel-heading button{flex-shrink:0}
+.activity-scroll{max-height:calc(100dvh - 200px);overflow-y:auto;overscroll-behavior-y:contain;scrollbar-gutter:stable;padding:0 8px 4px 4px;overflow-wrap:anywhere}
+.activity-scroll:focus-visible{outline:2px solid #626b75;outline-offset:3px;border-radius:4px}
+.activity-panel>.source-data{margin-top:18px}
+html.activities-open{overflow:hidden}
+.activities-dialog{width:min(1100px,calc(100vw - 48px));height:calc(100dvh - 64px);max-height:none;max-width:none;margin:auto;padding:24px;border:1px solid var(--line);border-radius:10px;background:white;color:var(--ink);overflow:hidden}
+.activities-dialog::backdrop{background:#19272866}
+.activities-dialog[open]{display:flex;flex-direction:column}
+.activities-dialog>.activity-panel-heading{flex-shrink:0;margin-bottom:16px}
+.activities-dialog>.activity-scroll{flex:1;min-height:0;max-height:none}
+.activities-dialog .timeline strong{font-size:14px}.activities-dialog .timeline p{font-size:14px}.activities-dialog .timeline article{padding:16px 0}
+@media(max-width:1100px){.activity-panel{position:static;padding-left:0}.activity-scroll{max-height:55dvh}}
+@media(max-width:760px){
+  .app-shell>.content{padding-right:max(12px,env(safe-area-inset-right,0px));padding-left:max(12px,env(safe-area-inset-left,0px))}
+  .journal-composer textarea{font-size:16px}.journal-composer .note-form>.choice-field,.journal-composer .note-form>select{max-width:none}
+  .activity-panel-heading button,.journal-composer button{min-height:44px}
+  .activities-dialog{width:calc(100vw - 16px);height:calc(100dvh - 16px);padding:16px 12px;padding-bottom:max(16px,env(safe-area-inset-bottom,0px))}
+}

@@ -80,6 +80,33 @@
   const leadForm = document.querySelector('.lead-form, .company-form');
   const formSnapshot = () => leadForm ? JSON.stringify(Array.from(new FormData(leadForm)).sort((a,b)=>a[0].localeCompare(b[0]))) : '';
   const initialFormSnapshot = formSnapshot();
+  const activitiesDialog = document.querySelector('#activities-dialog');
+  const activitiesList = document.querySelector('#lead-activities');
+  const activitiesTrigger = document.querySelector('[data-open-activities]');
+  if (activitiesDialog && activitiesList && activitiesTrigger) {
+    const anchor = document.createComment('Activities position');
+    let listScrollTop = 0;
+    activitiesTrigger.addEventListener('click', () => {
+      listScrollTop = activitiesList.scrollTop;
+      activitiesList.before(anchor);
+      activitiesDialog.append(activitiesList);
+      document.documentElement.classList.add('activities-open');
+      activitiesDialog.showModal();
+      activitiesList.scrollTop = listScrollTop;
+    });
+    activitiesDialog.querySelector('[data-close-activities]').addEventListener('click', () => activitiesDialog.close());
+    activitiesDialog.addEventListener('click', event => {
+      if (event.target !== activitiesDialog) return;
+      const rect = activitiesDialog.getBoundingClientRect();
+      if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) activitiesDialog.close();
+    });
+    activitiesDialog.addEventListener('close', () => {
+      anchor.replaceWith(activitiesList);
+      activitiesList.scrollTop = listScrollTop;
+      document.documentElement.classList.remove('activities-open');
+      activitiesTrigger.focus({preventScroll:true});
+    });
+  }
   function refreshFormState() {
     if(!leadForm)return;
     formDirty = formSnapshot() !== initialFormSnapshot;
@@ -375,7 +402,7 @@
     if (event.target.matches('.lead-form, .company-form')) {
       formDirty = false;
       event.target.querySelector('.form-save-status').textContent = 'Enregistrement…';
-      event.target.querySelector('button[type=submit]').disabled = true;
+      event.target.querySelector('.form-actions button[type=submit]').disabled = true;
     }
   });
   document.addEventListener('input', event => {
