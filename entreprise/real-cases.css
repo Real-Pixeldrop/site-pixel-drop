@@ -1,0 +1,12 @@
+/* The marker describes provenance; the visible status describes progress. */
+.cases-real-filter { display:flex; align-items:center; gap:9px; margin-top:22px; font-size:13px; line-height:1.5; cursor:pointer; }
+.cases-real-filter input { width:17px; height:17px; flex:none; accent-color:#141414; }
+.cases-real-filter input:focus-visible { outline:2px solid #3B82F6; outline-offset:4px; }
+.cases-real-legend { display:flex; align-items:flex-start; gap:6px; margin-top:12px; color:#626262; font-family:"Matter-thin"; font-size:12px; line-height:1.5; }
+.cases-real-legend svg, .case-real-badge svg { width:17px; height:17px; flex:none; }
+.use-case-card__meta { flex-wrap:wrap; }
+.use-case-card__meta .case-real-badge { display:inline-flex; align-items:center; gap:4px; color:#4D4D4D; font-size:11px; letter-spacing:normal; text-transform:none; white-space:nowrap; }
+.use-case-card .use-case-status { margin-top:12px; color:#444; font-family:"Matter"; font-size:12px; line-height:1.5; }
+.use-case-card[data-real="true"] .use-case-situation { border-left:0; border:1px solid #E1E5EC; border-radius:8px; background:#F6F8FB; }
+.use-case-card { scroll-margin-top:110px; }
+.use-case-card[hidden] { display:none; }
