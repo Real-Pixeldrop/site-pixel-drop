@@ -1,0 +1,16 @@
+/* The current full-width layout stays the default. Only personal opt-in restores old margins. */
+.sidebar .content-width-toggle{display:grid;place-items:center;width:36px;height:36px;margin:0 auto 6px;padding:0;border:0;border-radius:5px;background:transparent;color:var(--muted);cursor:pointer}
+.sidebar .content-width-toggle:hover,.sidebar .content-width-toggle[aria-pressed=true]{background:#e9eeed;color:#304b46}
+.page-width-original :is(.lead-heading,.detail-layout){max-width:1100px;margin-inline:auto}
+@media(min-width:1051px){
+  .page-width-original .app-shell>.content{padding-left:32px;padding-right:32px}
+  .page-width-original .detail-layout{gap:44px}
+}
+@media(min-width:1101px){
+  .page-width-original .detail-layout{grid-template-columns:minmax(400px,690px) minmax(240px,340px)}
+  .page-width-original .activity-panel{padding-left:26px}
+}
+@media(max-width:760px){
+  .sidebar .content-width-toggle{display:none}
+  .page-width-original .app-shell>.content{padding-left:max(14px,env(safe-area-inset-left,0px));padding-right:max(14px,env(safe-area-inset-right,0px))}
+}
