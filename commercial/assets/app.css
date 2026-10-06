@@ -327,3 +327,8 @@ html.activities-open{overflow:hidden}
   .activity-panel-heading button,.journal-composer button{min-height:44px}
   .activities-dialog{width:calc(100vw - 16px);height:calc(100dvh - 16px);padding:16px 12px;padding-bottom:max(16px,env(safe-area-inset-bottom,0px))}
 }
+
+/* Single origin tag. Import metadata stays in its original fields. */
+.provenance-field .choice-field{justify-self:start;width:auto;max-width:100%}
+.provenance-field .choice-trigger,.provenance-field select{width:auto;max-width:100%;background:#f1f1ef;border-color:transparent;border-radius:5px;color:var(--ink);font-weight:500}
+.provenance-field .choice-trigger:hover,.provenance-field select:hover{background:#e9e9e6}
