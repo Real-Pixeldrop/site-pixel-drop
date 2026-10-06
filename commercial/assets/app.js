@@ -233,6 +233,7 @@
     clearTimeout(toastTimer); toastTimer = setTimeout(() => box.classList.remove('visible'), error ? 9000 : 3000);
   }
   async function post(data) {
+    data.set('_space',String(window.PD_SPACE));
     data.set('csrf', window.PD_CSRF); data.set('ajax', '1');
     const response = await fetch(window.location.pathname, { method: 'POST', body: data, credentials: 'same-origin' });
     let result;
