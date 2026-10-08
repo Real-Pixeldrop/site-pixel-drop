@@ -76,6 +76,10 @@
   }
   document.addEventListener('error', event => { if (event.target.matches?.('.avatar img')) event.target.remove(); }, true);
 
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && document.activeElement?.closest('.weekly-call-goal')) document.activeElement.blur();
+  });
+
   let propertyQueue = Promise.resolve(), pendingEdits = 0, formDirty = false;
   const leadForm = document.querySelector('.lead-form, .company-form');
   const formSnapshot = () => leadForm ? JSON.stringify(Array.from(new FormData(leadForm)).sort((a,b)=>a[0].localeCompare(b[0]))) : '';
@@ -270,6 +274,8 @@
       if (!next) { location.assign(response.url); return; }
       if (request.signal.aborted) return;
       current.replaceWith(next);
+      const nextGoal = parsed.querySelector('#weekly-call-goal');
+      if (nextGoal) document.querySelector('#weekly-call-goal')?.replaceWith(nextGoal);
       restoreColumnWidths(next);
       if (next.querySelector('.kanban')) next.querySelector('.kanban').scrollLeft = scrollX;
       document.querySelector('.result-count').textContent = parsed.querySelector('.result-count').textContent;

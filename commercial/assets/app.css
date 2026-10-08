@@ -332,3 +332,14 @@ html.activities-open{overflow:hidden}
 .provenance-field .choice-field{justify-self:start;width:auto;max-width:100%}
 .provenance-field .choice-trigger,.provenance-field select{width:auto;max-width:100%;background:#f1f1ef;border-color:transparent;border-radius:5px;color:var(--ink);font-weight:500}
 .provenance-field .choice-trigger:hover,.provenance-field select:hover{background:#e9e9e6}
+
+/* Weekly calls: a quiet outline beside the view controls. */
+.weekly-call-goal{position:relative;display:inline-flex;flex:none;margin-right:2px}
+.weekly-call-trigger{display:grid;place-items:center;width:32px;height:36px;padding:0;border:0;border-radius:5px;background:transparent;color:#527a70;cursor:default}
+.weekly-call-trigger:hover,.weekly-call-trigger:focus-visible{background:var(--subtle)}
+.weekly-call-trigger:focus-visible{outline:2px solid #9db3aa;outline-offset:1px}
+.weekly-call-track{stroke:#deded9}.weekly-call-fill{stroke:currentColor}
+.weekly-call-tooltip{position:absolute;top:calc(100% + 7px);right:0;z-index:45;display:none;width:max-content;max-width:260px;padding:9px 11px;border:1px solid var(--line);border-radius:6px;background:#fff;box-shadow:0 3px 12px #0000000d;color:var(--text);font-size:12px;line-height:1.5;pointer-events:none}
+.weekly-call-tooltip strong,.weekly-call-tooltip>span,.weekly-call-tooltip small{display:block}.weekly-call-tooltip strong{font-weight:600}.weekly-call-tooltip>span,.weekly-call-tooltip small{color:var(--muted)}
+.weekly-call-goal:hover .weekly-call-tooltip,.weekly-call-goal:focus-within .weekly-call-tooltip{display:block}
+@media(max-width:760px){.workspace-view-actions{flex-wrap:wrap;justify-content:flex-start}.workspace-quick-actions{margin-left:auto}.weekly-call-trigger{height:44px}.weekly-call-tooltip{left:0;right:auto}}
