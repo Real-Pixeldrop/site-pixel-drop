@@ -21,6 +21,8 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="alternate icon" href="favicon.ico">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="demo-drop.css?v=20261023">
+  <script src="demo-drop.js?v=20261023" defer></script>
 </head>
 <body class="inner cases-page">
       <header role="banner" class="header-navigation">
@@ -46,7 +48,27 @@
             </nav>
           </div>
           <div class="header-cta">
-            <a href="https://agent.pixel-drop.com" target="_blank" rel="noopener" class="button button--purple">Voir la démo</a>
+            <div class="demo-drop">
+              <a href="hire-us.html?intent=demo" class="button button--purple demo-drop__trigger" aria-haspopup="dialog">Demander une démo</a>
+              <div class="demo-drop__panel" role="dialog" aria-label="Planifier une démonstration">
+                <div class="demo-drop__inner">
+                  <p class="demo-drop__title">Une démo en direct, sur vos cas</p>
+                  <p class="demo-drop__text">30 minutes en visio avec un expert Pixel Drop. Laissez vos coordonnées, nous fixons le créneau ensemble.</p>
+                  <form class="demo-drop__form" action="/form-handler.php" method="post">
+                    <input type="hidden" name="_type" value="Demande de démo Pixel Agent">
+                    <input type="hidden" name="demande" value="Démo Pixel Agent Suite, 30 min en visio">
+                    <input type="text" name="_hp" tabindex="-1" autocomplete="off" aria-hidden="true" class="demo-drop__hp">
+                    <label class="demo-drop__sr" for="demo-drop-email">Email professionnel</label>
+                    <input id="demo-drop-email" type="email" name="email" placeholder="Email professionnel" autocomplete="email" required>
+                    <label class="demo-drop__sr" for="demo-drop-tel">Téléphone</label>
+                    <input id="demo-drop-tel" type="tel" name="telephone" placeholder="Téléphone (facultatif)" autocomplete="tel">
+                    <button type="submit">Planifier ma démo</button>
+                  </form>
+                  <p class="demo-drop__status" role="status" aria-live="polite"></p>
+                  <a class="demo-drop__login" href="https://agent.pixel-drop.com" target="_blank" rel="noopener">Vous avez déjà un accès ? Se connecter</a>
+                </div>
+              </div>
+            </div>
             <a href="hire-us.html" class="button button--black">Nous contacter</a>
           </div>
           <details class="mobile-nav">
@@ -54,7 +76,7 @@
             <div class="mobile-nav__panel">
               <a href="fonctionnalites.html">Vue d’ensemble</a>
               <a href="cas-usage.html">Cas d’usage</a>
-              <a href="https://agent.pixel-drop.com" target="_blank" rel="noopener">Voir la démo</a>
+              <a href="hire-us.html?intent=demo">Demander une démo</a>
               <a href="hire-us.html">Nous contacter</a>
             </div>
           </details>
@@ -395,7 +417,7 @@
       <p><b>Compartimenter</b><span>L’outil rejoint l’espace de l’équipe avec ses droits et ses sources.</span></p>
       <p><b>Industrialiser</b><span>Le scénario devient un agent, une compétence ou un workflow récurrent.</span></p>
     </div>
-    <div class="cases-build__cta"><a class="button button--purple" href="https://agent.pixel-drop.com" target="_blank" rel="noopener">Voir la démo</a><a class="button button--black" href="hire-us.html">Étudier un cas d’usage</a></div>
+    <div class="cases-build__cta"><a class="button button--purple" href="hire-us.html?intent=demo">Demander une démo</a><a class="button button--black" href="hire-us.html">Étudier un cas d’usage</a></div>
   </section>
 </main>
     <footer>
