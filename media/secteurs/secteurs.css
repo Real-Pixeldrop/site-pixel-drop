@@ -69,7 +69,6 @@
 .pd-security-item h3 { margin: .65rem 0 .45rem; }
 .pd-security-icon { display: grid; place-items: center; width: 1.5rem; height: 1.5rem; color: var(--pd-sector-accent); }
 .pd-security-icon svg { display: block; width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 1.55; stroke-linecap: round; stroke-linejoin: round; }
-.pd-security-flag { display: block; width: 1.35rem; height: .9rem; border-radius: 2px; background: linear-gradient(90deg,#253f83 0 33.33%,#f4f5f6 33.33% 66.67%,#e4404e 66.67%); }
 
 .pd-sector-page-hero { padding-top: clamp(7.75rem, 11vw, 10rem); }
 .pd-sector-page-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .95fr); align-items: center; gap: clamp(1.4rem, 4vw, 4rem); }
